@@ -28,10 +28,6 @@
     outline: none;
   }
   
-  &:visited {
-    color: unset;
-  }
-  
   // Accessibility
   &[aria-disabled="true"] {
     cursor: not-allowed;

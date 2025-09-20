@@ -236,9 +236,10 @@ a {
   text-decoration-skip-ink: auto;
   
   // Zustände
-  &:visited {
-    color: inherit;
-  }
+  // Wenn Link geklickt dann inherit
+  // &:visited {
+  //   color: inherit;
+  // }
   
   &:hover,
   &:focus,
