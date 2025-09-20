@@ -1,8 +1,8 @@
 "use client";
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, AnchorHTMLAttributes, memo } from "react";
 import Link from "next/link";
 
-interface AnchorProps {
+interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   // 🔗 Link-Props
   href?: string;
   linkType?: "intern" | "extern" | "ugc";
@@ -25,7 +25,7 @@ interface AnchorProps {
   iconPosition?: "left" | "right";
 
   // 🧩 Content
-  children?: ReactNode;
+  child?: ReactNode;
 }
 
 const AnchorComponent: FC<AnchorProps> = ({
@@ -51,7 +51,8 @@ const AnchorComponent: FC<AnchorProps> = ({
   iconPosition = "left",
 
   // 🧩 Content
-  children,
+  child,
+  ...rest
 }) => {
   // CSS-Klassen zusammensetzen
   const combinedClassName = [
@@ -64,7 +65,7 @@ const AnchorComponent: FC<AnchorProps> = ({
     .filter(Boolean)
     .join(" ");
    // Default Text, falls nichts vorhanden
-  const fallbackLabel = label || children || icon || "LINK";
+  const fallbackLabel = label || child || icon || "LINK";
 
   // SEO/Accessibility Defaults
   const computedTitle = title || label;
@@ -92,7 +93,7 @@ const AnchorComponent: FC<AnchorProps> = ({
         : rel;
   }
 
-  // Inhalt (Label, Icon, Optional Children)
+  // Inhalt (Label, Icon, Optional child)
   const content = (
     <>
       {icon && iconPosition === "left" && (
@@ -114,6 +115,7 @@ const AnchorComponent: FC<AnchorProps> = ({
         title={computedTitle}
         aria-label={computedAriaLabel}
         data-analytics={analyticsId}
+        {...rest}
       >
         {content}
       </Link>
@@ -131,6 +133,7 @@ const AnchorComponent: FC<AnchorProps> = ({
       rel={computedRel}
       download={download}
       data-analytics={analyticsId}
+      {...rest}
     >
       {content}
     </a>
@@ -144,7 +147,7 @@ const areEqual = (prev: AnchorProps, next: AnchorProps) => {
   );
 };
 
-const Anchor = React.memo(AnchorComponent, areEqual);
+const Anchor = memo(AnchorComponent, areEqual);
 
 Anchor.displayName = "Anchor";
 
