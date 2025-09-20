@@ -1,0 +1,1155 @@
+// =============================================================================
+// UMFASSENDES KOMPLETT-RESET
+// =============================================================================
+
+// =============================================================================
+// ABSOLUTES GLOBAL RESET
+// =============================================================================
+
+*,
+*::before,
+*::after {
+  // Box-Modell
+  box-sizing: border-box;
+  
+  // Abstände und Rahmen
+  margin: 0;
+  padding: 0;
+  border: 0;
+  
+  // Typografie
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-transform: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  
+  // Darstellung
+  background: transparent;
+  outline: none;
+  list-style: none;
+  quotes: none;
+  
+  // Interaktion
+  cursor: inherit;
+  pointer-events: inherit;
+  user-select: inherit;
+  
+  // Animation
+  animation: none;
+  transition: none;
+  transform: none;
+  opacity: 1;
+  
+  // Schriftrendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  // Browser-spezifische Reset
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+  
+  // Sonstiges
+  overflow-wrap: normal;
+  white-space: normal;
+  word-break: normal;
+  hyphens: manual;
+  content: none;
+}
+
+// =============================================================================
+// HTML & BODY RESET
+// =============================================================================
+
+html {
+  // Layout
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  
+  // Typografie
+  line-height: 1.15;
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  
+  // Scrollverhalten
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+  
+  // Browser-spezifisch
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  // Layout
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  
+  // Darstellung
+  background-color: $color-background-primary;
+  color: $color-text-primary;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: $line-height-normal;
+  
+  // Rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  // Scroll
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+// =============================================================================
+// TYPOGRAPHY KOMPLETT-RESET
+// =============================================================================
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  color: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+}
+
+blockquote, q {
+  margin: 0;
+  padding: 0;
+  quotes: none;
+  font-style: inherit;
+  
+  &::before,
+  &::after {
+    content: '';
+    content: none;
+  }
+}
+
+address {
+  margin: 0;
+  padding: 0;
+  font-style: inherit;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-mono;
+  font-size: inherit;
+  line-height: inherit;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+code, kbd, samp {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-mono;
+  font-size: inherit;
+}
+
+// =============================================================================
+// LISTEN KOMPLETT-RESET
+// =============================================================================
+
+ul, ol, menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+  list-style-position: outside;
+  list-style-image: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+  
+  &::before,
+  &::after {
+    content: '';
+    content: none;
+  }
+}
+
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+dt {
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+}
+
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+// =============================================================================
+// LINKS KOMPLETT-RESET
+// =============================================================================
+
+a {
+  // Darstellung
+  background-color: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  
+  // Interaktion
+  outline: none;
+  -webkit-text-decoration-skip: objects;
+  text-decoration-skip-ink: auto;
+  
+  // Zustände
+  &:visited {
+    color: inherit;
+  }
+  
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+// =============================================================================
+// MEDIA KOMPLETT-RESET
+// =============================================================================
+
+img {
+  // Layout
+  display: block;
+  max-width: 100%;
+  height: auto;
+  
+  // Darstellung
+  border-style: none;
+  border-radius: 0;
+  
+  // Performance
+  image-rendering: auto;
+  content-visibility: auto;
+}
+
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+source {
+  display: none;
+}
+
+svg:not(:root) {
+  display: block;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+audio {
+  display: block;
+  max-width: 100%;
+}
+
+canvas {
+  display: inline-block;
+  image-rendering: crisp-edges;
+}
+
+iframe {
+  display: block;
+  border: 0;
+  max-width: 100%;
+}
+
+// =============================================================================
+// FORMULARE KOMPLETT-RESET
+// =============================================================================
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  white-space: normal;
+  border: 0;
+  font-weight: inherit;
+}
+
+label {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+}
+
+button, input, optgroup, select, textarea {
+  // Layout
+  margin: 0;
+  padding: 0;
+  
+  // Typografie
+  font: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-transform: inherit;
+  
+  // Darstellung
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  
+  // Browser-spezifisch
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button, input {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+input {
+  &[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+    
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+    }
+  }
+  
+  &[type="number"] {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  
+  &[type="date"],
+  &[type="time"],
+  &[type="datetime-local"],
+  &[type="month"] {
+    -webkit-appearance: listbox;
+  }
+  
+  &[type="checkbox"],
+  &[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+  }
+  
+  &[type="color"] {
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    
+    &::-webkit-color-swatch {
+      border: none;
+    }
+  }
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+  min-height: 3em;
+}
+
+select {
+  word-wrap: normal;
+  
+  &::-ms-expand {
+    display: none;
+  }
+  
+  &[multiple] {
+    option {
+      padding: 0;
+    }
+  }
+}
+
+option {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+progress {
+  vertical-align: baseline;
+  -webkit-appearance: none;
+  appearance: none;
+  
+  &::-webkit-progress-bar {
+    background: transparent;
+  }
+  
+  &::-webkit-progress-value {
+    background: currentColor;
+  }
+}
+
+meter {
+  -webkit-appearance: none;
+  appearance: none;
+  
+  &::-webkit-meter-bar {
+    background: transparent;
+  }
+}
+
+// =============================================================================
+// TABELLEN KOMPLETT-RESET
+// =============================================================================
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  empty-cells: show;
+}
+
+caption {
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  caption-side: bottom;
+  font-weight: inherit;
+}
+
+th, td {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-weight: inherit;
+  vertical-align: top;
+  border: none;
+}
+
+th {
+  text-align: inherit;
+  font-weight: inherit;
+}
+
+// =============================================================================
+// INTERAKTIVE ELEMENTE KOMPLETT-RESET
+// =============================================================================
+
+details {
+  display: block;
+  
+  &[open] > summary {
+    list-style-type: none;
+  }
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+  list-style: none;
+  
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+// =============================================================================
+// SPEZIALELEMENTE KOMPLETT-RESET
+// =============================================================================
+
+ruby {
+  ruby-align: space-around;
+}
+
+rt {
+  text-transform: none;
+  line-height: 1;
+  text-align: start;
+  font-size: 50%;
+}
+
+rp {
+  display: none;
+}
+
+dialog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 1em;
+  background: white;
+  border: solid;
+  color: black;
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  
+  &:not([open]) {
+    display: none;
+  }
+}
+
+script {
+  display: none !important;
+}
+
+noscript {
+  display: block;
+}
+
+// =============================================================================
+// FOCUS & SELECTION RESET
+// =============================================================================
+
+:focus {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: color-opacity($color-primary, 0.2);
+  color: inherit;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background-color: color-opacity($color-primary, 0.2);
+  color: inherit;
+  text-shadow: none;
+}
+
+// =============================================================================
+// PLACEHOLDER RESET
+// =============================================================================
+
+::placeholder {
+  color: $color-gray-400;
+  opacity: 1;
+  font: inherit;
+}
+
+::-webkit-input-placeholder {
+  color: $color-gray-400;
+  opacity: 1;
+  font: inherit;
+}
+
+::-moz-placeholder {
+  color: $color-gray-400;
+  opacity: 1;
+  font: inherit;
+}
+
+:-ms-input-placeholder {
+  color: $color-gray-400;
+  opacity: 1;
+  font: inherit;
+}
+
+// =============================================================================
+// SCROLLBAR RESET
+// =============================================================================
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-gray-100;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-gray-400;
+  border-radius: $border-radius-full;
+  border: 2px solid $color-gray-100;
+  
+  &:hover {
+    background: $color-gray-500;
+  }
+  
+  &:active {
+    background: $color-gray-600;
+  }
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+// =============================================================================
+// ACCESSIBILITY RESET
+// =============================================================================
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $color-primary;
+  color: $color-white;
+  padding: $spacing-sm $spacing-md;
+  text-decoration: none;
+  z-index: $z-index-max;
+  transition: top 0.3s ease;
+  
+  &:focus {
+    top: 0;
+  }
+}
+
+// =============================================================================
+// MEDIA QUERY RESETS
+// =============================================================================
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  
+  pre,
+  blockquote {
+    border: 1px solid $color-gray-300;
+    page-break-inside: avoid;
+  }
+  
+  thead {
+    display: table-header-group;
+  }
+  
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+}
+
+// =============================================================================
+// BROWSER-SPEZIFISCHE FIXES
+// =============================================================================
+
+// iOS Button Reset
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+// Firefox Focus Ring
+::-moz-focus-inner {
+  border: 0;
+}
+
+// Edge Placeholder Fix
+::-ms-input-placeholder {
+  color: $color-gray-400 !important;
+}
+
+
+// =============================================================================
+// KONSISTENTE STANDARDWERTE
+// =============================================================================
+
+// Konsistente Rahmen
+*:where([class]) {
+  border-style: solid;
+  border-width: 0;
+}
+
+// Konsistente Margin für Text-Elemente
+:where(p, h1, h2, h3, h4, h5, h6) {
+  margin-block: 0;
+}
+
+// Konsistente Listen-Aufzählung
+:where(ul, ol) {
+  list-style-position: outside;
+}
+
+// Konsistente Focus-Styles
+:where(button, input, select, textarea, a):focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}
+
+// =============================================================================
+// DISABLE STATES
+// =============================================================================
+
+[disabled] {
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+  pointer-events: none !important;
+  
+  * {
+    pointer-events: none !important;
+  }
+}
+
+[aria-disabled="true"] {
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
+
+// =============================================================================
+// INLINE ELEMENT RESET
+// =============================================================================
+
+strong, b {
+  font-weight: $font-weight-bold;
+}
+
+em, i {
+  font-style: italic;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+mark {
+  background-color: color-opacity($color-warning, 0.2);
+  color: inherit;
+}
+
+time {
+  display: inline;
+}
+
+// =============================================================================
+// ABSOLUT VOLLSTÄNDIGES RESET
+// =============================================================================
+
+// Sicherstellen, dass wirklich ALLE Elemente zurückgesetzt werden
+article, aside, footer, header, nav, section, main,
+figure, figcaption, 
+div, span,
+hr, br,
+output, 
+var, 
+samp, 
+kbd, 
+code, 
+pre, 
+dfn, 
+cite, 
+q, 
+s, 
+del, 
+ins, 
+u, 
+bdi, 
+bdo, 
+wbr, 
+data, 
+time, 
+mark, 
+ruby, 
+rt, 
+rp, 
+b, 
+strong, 
+i, 
+em, 
+small, 
+sub, 
+sup, 
+tt, 
+big, 
+acronym, 
+abbr, 
+address, 
+center, 
+dir, 
+hgroup, 
+listing, 
+plaintext, 
+strike, 
+xmp, 
+base, 
+basefont, 
+isindex, 
+nextid, 
+param, 
+applet, 
+object, 
+embed, 
+noembed, 
+marquee, 
+keygen, 
+menu, 
+menuitem, 
+command, 
+datalist, 
+output, 
+progress, 
+meter, 
+audio, 
+video, 
+source, 
+track, 
+canvas, 
+map, 
+area, 
+picture, 
+svg, 
+math, 
+mglyph, 
+malignmark, 
+mi, 
+mn, 
+mo, 
+ms, 
+mtext, 
+mspace, 
+mphantom, 
+mrow, 
+mfrac, 
+msqrt, 
+mroot, 
+mstyle, 
+merror, 
+mpadded, 
+mfenced, 
+menclose, 
+msub, 
+msup, 
+msubsup, 
+munder, 
+mover, 
+munderover, 
+mmultiscripts, 
+mtable, 
+mtr, 
+mtd, 
+mlabeledtr, 
+maction, 
+semantics, 
+annotation, 
+annotation-xml, 
+foreignObject, 
+desc, 
+title, 
+metadata, 
+defs, 
+g, 
+symbol, 
+use, 
+path, 
+rect, 
+circle, 
+ellipse, 
+line, 
+polyline, 
+polygon, 
+text, 
+tspan, 
+tref, 
+textPath, 
+altGlyph, 
+altGlyphDef, 
+altGlyphItem, 
+glyphRef, 
+marker, 
+color-profile, 
+linearGradient, 
+radialGradient, 
+stop, 
+pattern, 
+clipPath, 
+mask, 
+filter, 
+feBlend, 
+feColorMatrix, 
+feComponentTransfer, 
+feComposite, 
+feConvolveMatrix, 
+feDiffuseLighting, 
+feDisplacementMap, 
+feFlood, 
+feFuncA, 
+feFuncB, 
+feFuncG, 
+feFuncR, 
+feGaussianBlur, 
+feImage, 
+feMerge, 
+feMergeNode, 
+feMorphology, 
+feOffset, 
+feSpecularLighting, 
+feTile, 
+feTurbulence, 
+feDistantLight, 
+fePointLight, 
+feSpotLight, 
+cursor, 
+a, 
+p, 
+br, 
+span, 
+div, 
+hr, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+ul, 
+ol, 
+li, 
+dl, 
+dt, 
+dd, 
+pre, 
+blockquote, 
+figure, 
+figcaption, 
+main, 
+section, 
+nav, 
+article, 
+aside, 
+header, 
+footer, 
+address, 
+body, 
+html, 
+head, 
+title, 
+meta, 
+link, 
+style, 
+script, 
+noscript, 
+template, 
+base, 
+form, 
+fieldset, 
+legend, 
+label, 
+input, 
+button, 
+select, 
+datalist, 
+optgroup, 
+option, 
+textarea, 
+output, 
+progress, 
+meter, 
+details, 
+summary, 
+menu, 
+menuitem, 
+table, 
+caption, 
+colgroup, 
+col, 
+tbody, 
+thead, 
+tfoot, 
+tr, 
+td, 
+th, 
+iframe, 
+embed, 
+object, 
+param, 
+video, 
+audio, 
+source, 
+track, 
+canvas, 
+map, 
+area, 
+picture, 
+svg, 
+math, 
+slot, 
+content, 
+element, 
+shadow, 
+template, 
+acronym, 
+applet, 
+basefont, 
+big, 
+center, 
+dir, 
+font, 
+frame, 
+frameset, 
+noframes, 
+isindex, 
+listing, 
+noembed, 
+plaintext, 
+strike, 
+tt, 
+xmp {
+  @extend *; // Erbt alle Reset-Eigenschaften vom universellen Selektor
+}

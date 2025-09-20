@@ -1,0 +1,257 @@
+.anchor {
+  // Layout
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xxs;
+  vertical-align: middle;
+  
+  // Typografie
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  text-decoration: none;
+  cursor: pointer;
+  
+  // Animation
+  @include color-transition;
+  transition-property: color, background-color, border-color, text-decoration, transform;
+  transition-duration: $transition-duration-fast;
+  
+  // Interaktion
+  &:focus {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+    border-radius: $border-radius-sm;
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+  
+  &:visited {
+    color: $color-text-secondary;
+  }
+  
+  // Accessibility
+  &[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &__text-link {
+    font-weight: normal;
+    text-decoration: underline;
+  }
+
+  &__icon--left {
+    margin-right: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0; // Verhindert das Schrumpfen des Icons
+  }
+
+  &__icon--right {
+    margin-left: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0; // Verhindert das Schrumpfen des Icons
+  }
+  
+  // 🎨 Style-Props: Varianten
+  &__primary {
+    color: $color-primary;
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+
+    &:active {
+      color: $color-primary-light;
+    }
+    
+    &:focus {
+      outline-color: $color-primary;
+    }
+  }
+
+  &__secondary {
+    color: $color-secondary;
+
+    &:hover {
+      color: $color-secondary-dark;
+    }
+
+    &:active {
+      color: $color-secondary-light;
+    }
+    
+    &:focus {
+      outline-color: $color-secondary;
+    }
+  }
+
+  &__default {
+    color: $color-primary;
+
+    &:hover {
+      color: darken($color-primary, 10%);
+    }
+
+    &:active {
+      color: lighten($color-primary, 10%);
+    }
+    
+    &:focus {
+      outline-color: $color-primary;
+    }
+  }
+
+  // ✅ NEUE VARIANTEN: Success, Warning, Error
+  &__success {
+    color: $color-success;
+
+    &:hover {
+      color: $color-success-dark;
+    }
+
+    &:active {
+      color: $color-success-light;
+    }
+    
+    &:focus {
+      outline-color: $color-success;
+    }
+  }
+
+  &__warning {
+    color: $color-warning;
+
+    &:hover {
+      color: $color-warning-dark;
+    }
+
+    &:active {
+      color: $color-warning-light;
+    }
+    
+    &:focus {
+      outline-color: $color-warning;
+    }
+  }
+
+  &__error {
+    color: $color-error;
+
+    &:hover {
+      color: $color-error-dark;
+    }
+
+    &:active {
+      color: $color-error-light;
+    }
+    
+    &:focus {
+      outline-color: $color-error;
+    }
+  }
+  
+  // 🎨 Style-Props: Unterstreichung
+  &__underline-always {
+    text-decoration: underline;
+    text-underline-offset: 2px; // Bessere Lesbarkeit
+  }
+
+  &__underline-hover {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+
+  &__underline-none {
+    text-decoration: none;
+  }
+  
+  // Größen-Varianten
+  &__small {
+    font-size: $font-size-sm;
+    padding: $spacing-xxs $spacing-xs;
+  }
+  
+  &__medium {
+    font-size: $font-size-md;
+    padding: $spacing-xs $spacing-sm;
+  }
+  
+  &__large {
+    font-size: $font-size-lg;
+    padding: $spacing-sm $spacing-md;
+  }
+  
+  // Button-ähnliche Links
+  &__button {
+    border: 1px solid $color-primary;
+    border-radius: $border-radius-md;
+    padding: $spacing-xs $spacing-sm;
+    
+    &:hover {
+      background-color: color-opacity($color-primary, 0.1);
+    }
+
+    // Button-Varianten für die neuen Farben
+    &.anchor__success {
+      border-color: $color-success;
+      
+      &:hover {
+        background-color: color-opacity($color-success, 0.1);
+      }
+    }
+
+    &.anchor__warning {
+      border-color: $color-warning;
+      
+      &:hover {
+        background-color: color-opacity($color-warning, 0.1);
+      }
+    }
+
+    &.anchor__error {
+      border-color: $color-error;
+      
+      &:hover {
+        background-color: color-opacity($color-error, 0.1);
+      }
+    }
+
+    &.anchor__secondary {
+      border-color: $color-secondary;
+      
+      &:hover {
+        background-color: color-opacity($color-secondary, 0.1);
+      }
+    }
+  }
+
+  // ✅ Zusätzliche Styles für spezielle Link-Typen
+  // &__extern,
+  // &__ugc,
+  // &__mail,
+  // &__tel {
+  //   // Spezielle Styles für verschiedene Link-Typen können hier hinzugefügt werden
+  // }
+
+  // &__extern {
+  //   // Zusätzlicher Style für externe Links
+  // }
+
+  // &__mail {
+  //   // Style für Mail-Links
+  // }
+
+  // &__tel {
+  //   // Style für Telefon-Links
+  // }
+}

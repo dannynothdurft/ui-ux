@@ -1,0 +1,180 @@
+// =============================================================================
+// TYPOGRAFIE-SYSTEM
+// =============================================================================
+
+// =============================================================================
+// SCHRIFTARTEN
+// =============================================================================
+
+// Schriftfamilien
+$font-family-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif !default;
+$font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !default;
+
+// Standard Schriftfamilie
+$font-family-base: $font-family-sans !default;
+
+// =============================================================================
+// SCHRIFTGRÖßEN
+// =============================================================================
+
+// Basis Schriftgröße
+$font-size-base: 1rem !default; // 16px
+
+// Schriftgrößen-Skala
+$font-size-xs: 0.75rem !default;   // 12px
+$font-size-sm: 0.875rem !default;  // 14px
+$font-size-md: 1rem !default;      // 16px
+$font-size-lg: 1.125rem !default;  // 18px
+$font-size-xl: 1.25rem !default;   // 20px
+$font-size-xxl: 1.5rem !default;   // 24px
+$font-size-3xl: 1.875rem !default; // 30px
+$font-size-4xl: 2.25rem !default;  // 36px
+$font-size-5xl: 3rem !default;     // 48px
+$font-size-6xl: 3.75rem !default;  // 60px
+
+// =============================================================================
+// ZEILENHÖHEN (LINE-HEIGHT)
+// =============================================================================
+
+$line-height-tight: 1.1 !default;
+$line-height-normal: 1.5 !default;
+$line-height-relaxed: 1.75 !default;
+$line-height-loose: 2 !default;
+
+// =============================================================================
+// SCHRIFTGEWICHTE
+// =============================================================================
+
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-extrabold: 800 !default;
+
+// =============================================================================
+// BUCHSTABENABSTÄNDE (LETTER SPACING)
+// =============================================================================
+
+$letter-spacing-tighter: -0.05em !default;
+$letter-spacing-tight: -0.025em !default;
+$letter-spacing-normal: 0 !default;
+$letter-spacing-wide: 0.025em !default;
+$letter-spacing-wider: 0.05em !default;
+$letter-spacing-widest: 0.1em !default;
+
+// =============================================================================
+// TYPOGRAFIE-MAPS
+// =============================================================================
+
+$font-sizes: (
+  'xs': $font-size-xs,
+  'sm': $font-size-sm,
+  'md': $font-size-md,
+  'lg': $font-size-lg,
+  'xl': $font-size-xl,
+  'xxl': $font-size-xxl,
+  '3xl': $font-size-3xl,
+  '4xl': $font-size-4xl,
+  '5xl': $font-size-5xl,
+  '6xl': $font-size-6xl
+) !default;
+
+$line-heights: (
+  'tight': $line-height-tight,
+  'normal': $line-height-normal,
+  'relaxed': $line-height-relaxed,
+  'loose': $line-height-loose
+) !default;
+
+// =============================================================================
+// TYPOGRAFIE-FUNKTIONEN
+// =============================================================================
+
+@function font-size($key) {
+  @if map-has-key($font-sizes, $key) {
+    @return map-get($font-sizes, $key);
+  } @else {
+    @error "Schriftgröße '#{$key}' nicht gefunden.";
+  }
+}
+
+@function line-height($key) {
+  @if map-has-key($line-heights, $key) {
+    @return map-get($line-heights, $key);
+  } @else {
+    @error "Zeilenhöhe '#{$key}' nicht gefunden.";
+  }
+}
+
+// =============================================================================
+// TYPOGRAFIE-MIXINS
+// =============================================================================
+
+@mixin text-style($size: 'md', $weight: $font-weight-normal, $line-height: 'normal', $spacing: 'normal') {
+  font-size: font-size($size);
+  font-weight: $weight;
+  line-height: line-height($line-height);
+  letter-spacing: $spacing;
+}
+
+@mixin heading($level: 1) {
+  @if $level == 1 {
+    @include text-style('5xl', $font-weight-bold, 'tight', 'tight');
+  } @else if $level == 2 {
+    @include text-style('4xl', $font-weight-bold, 'tight', 'tight');
+  } @else if $level == 3 {
+    @include text-style('3xl', $font-weight-semibold, 'tight', 'normal');
+  } @else if $level == 4 {
+    @include text-style('xxl', $font-weight-semibold, 'normal', 'normal');
+  } @else if $level == 5 {
+    @include text-style('xl', $font-weight-medium, 'normal', 'normal');
+  } @else if $level == 6 {
+    @include text-style('lg', $font-weight-medium, 'normal', 'wide');
+  }
+}
+
+// =============================================================================
+// RESPONSIVE TYPOGRAFIE
+// =============================================================================
+
+@mixin responsive-text($property, $default-value, $breakpoint-values: ()) {
+  #{$property}: $default-value;
+  
+  @each $breakpoint-name, $value in $breakpoint-values {
+    @include min-breakpoint($breakpoint-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+:root {
+  // Schriftfamilien
+  --font-family-sans: #{$font-family-sans};
+  --font-family-serif: #{$font-family-serif};
+  --font-family-mono: #{$font-family-mono};
+  --font-family-base: #{$font-family-base};
+  
+  // Schriftgrößen
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-md: #{$font-size-md};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-xl: #{$font-size-xl};
+  --font-size-xxl: #{$font-size-xxl};
+  --font-size-3xl: #{$font-size-3xl};
+  --font-size-4xl: #{$font-size-4xl};
+  --font-size-5xl: #{$font-size-5xl};
+  --font-size-6xl: #{$font-size-6xl};
+  
+  // Zeilenhöhen
+  --line-height-tight: #{$line-height-tight};
+  --line-height-normal: #{$line-height-normal};
+  --line-height-relaxed: #{$line-height-relaxed};
+  --line-height-loose: #{$line-height-loose};
+}

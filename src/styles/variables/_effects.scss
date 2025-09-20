@@ -1,0 +1,175 @@
+// =============================================================================
+// EFFEKTE-SYSTEM (Box-Shadows, Border-Radius, etc.)
+// =============================================================================
+
+// =============================================================================
+// RAHMENRADIUS (BORDER-RADIUS)
+// =============================================================================
+
+$border-radius-none: 0 !default;
+$border-radius-sm: 0.125rem !default;  // 2px
+$border-radius-md: 0.25rem !default;   // 4px
+$border-radius-lg: 0.5rem !default;    // 8px
+$border-radius-xl: 0.75rem !default;   // 12px
+$border-radius-xxl: 1rem !default;     // 16px
+$border-radius-full: 9999px !default;  // Vollständig abgerundet
+
+// =============================================================================
+// SCHATTEN (BOX-SHADOWS)
+// =============================================================================
+
+// Kleine Schatten
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !default;
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !default;
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+
+// Große Schatten
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+$shadow-xxl: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !default;
+
+// Innere Schatten
+$shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06) !default;
+
+// Spezielle Schatten
+$shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.5) !default;
+$shadow-error: 0 0 0 3px rgba(239, 68, 68, 0.5) !default;
+
+// =============================================================================
+// TRANSITION & ANIMATION
+// =============================================================================
+
+// Transition-Dauern
+$transition-duration-ultra-fast: 50ms !default;
+$transition-duration-fast: 100ms !default;
+$transition-duration-normal: 200ms !default;
+$transition-duration-slow: 300ms !default;
+$transition-duration-ultra-slow: 500ms !default;
+
+// Transition-Timing-Functions
+$transition-timing-linear: linear !default;
+$transition-timing-ease: ease !default;
+$transition-timing-ease-in: ease-in !default;
+$transition-timing-ease-out: ease-out !default;
+$transition-timing-ease-in-out: ease-in-out !default;
+$transition-timing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55) !default;
+
+// Animation-Delays
+$animation-delay-short: 100ms !default;
+$animation-delay-medium: 200ms !default;
+$animation-delay-long: 400ms !default;
+
+// =============================================================================
+// OPACITY
+// =============================================================================
+
+$opacity-0: 0 !default;
+$opacity-5: 0.05 !default;
+$opacity-10: 0.1 !default;
+$opacity-15: 0.15 !default;
+$opacity-20: 0.2 !default;
+$opacity-25: 0.25 !default;
+$opacity-30: 0.3 !default;
+$opacity-35: 0.35 !default;
+$opacity-40: 0.4 !default;
+$opacity-45: 0.45 !default;
+$opacity-50: 0.5 !default;
+$opacity-55: 0.55 !default;
+$opacity-60: 0.6 !default;
+$opacity-65: 0.65 !default;
+$opacity-70: 0.7 !default;
+$opacity-75: 0.75 !default;
+$opacity-80: 0.8 !default;
+$opacity-85: 0.85 !default;
+$opacity-90: 0.9 !default;
+$opacity-95: 0.95 !default;
+$opacity-100: 1 !default;
+
+// =============================================================================
+// EFFEKTE-MAPS
+// =============================================================================
+
+$border-radius-map: (
+  'none': $border-radius-none,
+  'sm': $border-radius-sm,
+  'md': $border-radius-md,
+  'lg': $border-radius-lg,
+  'xl': $border-radius-xl,
+  'xxl': $border-radius-xxl,
+  'full': $border-radius-full
+) !default;
+
+$shadow-map: (
+  'sm': $shadow-sm,
+  'md': $shadow-md,
+  'lg': $shadow-lg,
+  'xl': $shadow-xl,
+  'xxl': $shadow-xxl,
+  'inner': $shadow-inner,
+  'focus': $shadow-focus,
+  'error': $shadow-error
+) !default;
+
+// =============================================================================
+// EFFEKTE-FUNKTIONEN
+// =============================================================================
+
+@function border-radius($key) {
+  @if map-has-key($border-radius-map, $key) {
+    @return map-get($border-radius-map, $key);
+  } @else {
+    @error "Border-Radius '#{$key}' nicht gefunden.";
+  }
+}
+
+@function shadow($key) {
+  @if map-has-key($shadow-map, $key) {
+    @return map-get($shadow-map, $key);
+  } @else {
+    @error "Shadow '#{$key}' nicht gefunden.";
+  }
+}
+
+// =============================================================================
+// EFFEKTE-MIXINS
+// =============================================================================
+
+@mixin border-radius($radius: 'md') {
+  border-radius: border-radius($radius);
+}
+
+@mixin shadow($shadow: 'md') {
+  box-shadow: shadow($shadow);
+}
+
+@mixin transition($properties: all, $duration: $transition-duration-normal, $timing: $transition-timing-ease-in-out) {
+  transition: $properties $duration $timing;
+}
+
+@mixin focus-ring($color: $color-primary, $size: 3px) {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 $size $color;
+}
+
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+:root {
+  // Border-Radius
+  --border-radius-sm: #{$border-radius-sm};
+  --border-radius-md: #{$border-radius-md};
+  --border-radius-lg: #{$border-radius-lg};
+  --border-radius-xl: #{$border-radius-xl};
+  --border-radius-xxl: #{$border-radius-xxl};
+  --border-radius-full: #{$border-radius-full};
+  
+  // Schatten
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+  --shadow-xxl: #{$shadow-xxl};
+  --shadow-inner: #{$shadow-inner};
+  --shadow-focus: #{$shadow-focus};
+}

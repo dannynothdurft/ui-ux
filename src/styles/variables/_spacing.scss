@@ -1,0 +1,243 @@
+// =============================================================================
+// ABSTÄNDE-SYSTEM (SPACING)
+// =============================================================================
+
+// =============================================================================
+// BASIS-EINHEITEN
+// =============================================================================
+
+// Basis-Einheit (1rem = 16px in den meisten Browsern)
+$spacing-base-unit: 1rem !default; // 16px
+$spacing-base-pixel: 16px !default;
+
+// =============================================================================
+// ABSTANDS-SKALA
+// =============================================================================
+
+// Kleine Abstände (für innere Padding/Margins)
+$spacing-xxs: 0.125rem !default;  // 2px
+$spacing-xs: 0.25rem !default;    // 4px
+$spacing-sm: 0.5rem !default;     // 8px
+$spacing-md: 0.75rem !default;    // 12px
+$spacing-lg: 1rem !default;       // 16px
+
+// Mittlere Abstände (für Komponenten-Abstände)
+$spacing-xl: 1.5rem !default;     // 24px
+$spacing-xxl: 2rem !default;      // 32px
+$spacing-3xl: 2.5rem !default;    // 40px
+$spacing-4xl: 3rem !default;      // 48px
+
+// Große Abstände (für Sektionen und Layout)
+$spacing-5xl: 4rem !default;      // 64px
+$spacing-6xl: 5rem !default;      // 80px
+$spacing-7xl: 6rem !default;      // 96px
+$spacing-8xl: 8rem !default;      // 128px
+$spacing-9xl: 10rem !default;     // 160px
+
+// Spezielle Abstände
+$spacing-container: 1.5rem !default; // Standard Container Padding
+$spacing-section: 4rem !default;     // Standard Sektionsabstand
+
+// =============================================================================
+// ABSTANDS-MAPS
+// =============================================================================
+
+// Map für numerische Zugriff
+$spacing-map: (
+  '0': 0,
+  'xxs': $spacing-xxs,
+  'xs': $spacing-xs,
+  'sm': $spacing-sm,
+  'md': $spacing-md,
+  'lg': $spacing-lg,
+  'xl': $spacing-xl,
+  'xxl': $spacing-xxl,
+  '3xl': $spacing-3xl,
+  '4xl': $spacing-4xl,
+  '5xl': $spacing-5xl,
+  '6xl': $spacing-6xl,
+  '7xl': $spacing-7xl,
+  '8xl': $spacing-8xl,
+  '9xl': $spacing-9xl,
+  'container': $spacing-container,
+  'section': $spacing-section
+) !default;
+
+// Responsive Abstände Map
+$spacing-responsive: (
+  'sm': (
+    'section': 2rem,
+    'container': 1rem
+  ),
+  'md': (
+    'section': 3rem,
+    'container': 1.25rem
+  ),
+  'lg': (
+    'section': 4rem,
+    'container': 1.5rem
+  ),
+  'xl': (
+    'section': 5rem,
+    'container': 2rem
+  )
+) !default;
+
+// =============================================================================
+// ABSTANDS-FUNKTIONEN
+// =============================================================================
+
+// Funktion zum Abrufen eines Abstandswerts
+@function spacing($key) {
+  @if map-has-key($spacing-map, $key) {
+    @return map-get($spacing-map, $key);
+  } @else {
+    @error "Abstand '#{$key}' wurde nicht in der Abstands-Map gefunden.";
+  }
+}
+
+// Funktion für responsive Abstände
+@function spacing-responsive($type, $breakpoint: 'lg') {
+  $breakpoint-map: map-get($spacing-responsive, $breakpoint);
+  
+  @if $breakpoint-map and map-has-key($breakpoint-map, $type) {
+    @return map-get($breakpoint-map, $type);
+  } @else {
+    @error "Responsiver Abstand '#{$type}' für Breakpoint '#{$breakpoint}' nicht gefunden.";
+  }
+}
+
+// Funktion zum Konvertieren von Pixel zu REM
+@function px-to-rem($pixels) {
+  @return calc($pixels / $spacing-base-pixel) * 1rem;
+}
+
+// =============================================================================
+// ABSTANDS-MIXINS
+// =============================================================================
+
+// Mixin für Padding
+@mixin padding($top: null, $right: null, $bottom: null, $left: null) {
+  @if $top and $right and $bottom and $left {
+    padding: $top $right $bottom $left;
+  } @else if $top and $right and $bottom == null and $left == null {
+    padding: $top $right;
+  } @else if $top and $right == null and $bottom == null and $left == null {
+    padding: $top;
+  } @else {
+    @error "Ungültige Parameter für Padding-Mixin";
+  }
+}
+
+// Mixin für Margin
+@mixin margin($top: null, $right: null, $bottom: null, $left: null) {
+  @if $top and $right and $bottom and $left {
+    margin: $top $right $bottom $left;
+  } @else if $top and $right and $bottom == null and $left == null {
+    margin: $top $right;
+  } @else if $top and $right == null and $bottom == null and $left == null {
+    margin: $top;
+  } @else {
+    @error "Ungültige Parameter für Margin-Mixin";
+  }
+}
+
+// Mixin für responsive Abstände
+@mixin responsive-spacing($property, $default-value, $breakpoint-values: ()) {
+  #{$property}: $default-value;
+  
+  @each $breakpoint-name, $value in $breakpoint-values {
+    @include min-breakpoint($breakpoint-name) {
+      #{$property}: $value;
+    }
+  }
+}
+
+// Mixin für automatischen Layout-Abstand
+@mixin layout-spacing($type: 'section') {
+  @if $type == 'section' {
+    margin-bottom: $spacing-section;
+    
+    @include responsive-spacing('margin-bottom', $spacing-section, (
+      'sm': spacing-responsive('section', 'sm'),
+      'md': spacing-responsive('section', 'md'),
+      'lg': spacing-responsive('section', 'lg'),
+      'xl': spacing-responsive('section', 'xl')
+    ));
+  } @else if $type == 'container' {
+    padding-left: $spacing-container;
+    padding-right: $spacing-container;
+    
+    @include responsive-spacing('padding-left', $spacing-container, (
+      'sm': spacing-responsive('container', 'sm'),
+      'md': spacing-responsive('container', 'md'),
+      'lg': spacing-responsive('container', 'lg'),
+      'xl': spacing-responsive('container', 'xl')
+    ));
+    
+    @include responsive-spacing('padding-right', $spacing-container, (
+      'sm': spacing-responsive('container', 'sm'),
+      'md': spacing-responsive('container', 'md'),
+      'lg': spacing-responsive('container', 'lg'),
+      'xl': spacing-responsive('container', 'xl')
+    ));
+  }
+}
+
+// =============================================================================
+// CSS CUSTOM PROPERTIES
+// =============================================================================
+
+:root {
+  // Kleine Abstände
+  --spacing-xxs: #{$spacing-xxs};
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  
+  // Mittlere Abstände
+  --spacing-xl: #{$spacing-xl};
+  --spacing-xxl: #{$spacing-xxl};
+  --spacing-3xl: #{$spacing-3xl};
+  --spacing-4xl: #{$spacing-4xl};
+  
+  // Große Abstände
+  --spacing-5xl: #{$spacing-5xl};
+  --spacing-6xl: #{$spacing-6xl};
+  --spacing-7xl: #{$spacing-7xl};
+  --spacing-8xl: #{$spacing-8xl};
+  --spacing-9xl: #{$spacing-9xl};
+  
+  // Spezielle Abstände
+  --spacing-container: #{$spacing-container};
+  --spacing-section: #{$spacing-section};
+}
+
+// =============================================================================
+// UTILITY-KLASSEN (Optional)
+// =============================================================================
+
+// Padding Utilities
+.p-xxs { padding: var(--spacing-xxs); }
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+// Margin Utilities
+.m-xxs { margin: var(--spacing-xxs); }
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+// Gap Utilities (für Flex/Grid)
+.gap-xxs { gap: var(--spacing-xxs); }
+.gap-xs { gap: var(--spacing-xs); }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
+.gap-xl { gap: var(--spacing-xl); }

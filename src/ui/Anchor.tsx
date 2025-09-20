@@ -5,7 +5,7 @@ import Link from "next/link";
 interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   // 🔗 Link-Props
   href?: string;
-  linkType?: "intern" | "extern" | "ugc";
+  linkType?: "intern" | "extern" | "ugc" | "mail" | "tel";
   target?: "_blank" | "_self" | "_parent" | "_top";
   download?: boolean | string;
   rel?: string;
@@ -17,7 +17,7 @@ interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   analyticsId?: string;
 
   // 🎨 Style-Props (UI/UX)
-  variant?: "primary" | "secondary" | "default";
+  variant?: "primary" | "secondary" | "default" | "success" | "warning" | "error";
   underline?: "always" | "hover" | "none";
   isTextLink?: boolean;
   className?: string;
@@ -25,7 +25,7 @@ interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   iconPosition?: "left" | "right";
 
   // 🧩 Content
-  child?: ReactNode;
+  children?: ReactNode;
 }
 
 const AnchorComponent: FC<AnchorProps> = ({
@@ -51,63 +51,74 @@ const AnchorComponent: FC<AnchorProps> = ({
   iconPosition = "left",
 
   // 🧩 Content
-  child,
+  children,
   ...rest
 }) => {
+  // Link-Typ basierend auf href automatisch erkennen, falls nicht explizit gesetzt
+  const detectedLinkType = React.useMemo(() => {
+    if (linkType !== "intern") return linkType;
+    if (href.startsWith("mailto:")) return "mail";
+    if (href.startsWith("tel:")) return "tel";
+    if (href.startsWith("#") || href.startsWith("/")) return "intern";
+    return "extern";
+  }, [href, linkType]);
+
   // CSS-Klassen zusammensetzen
   const combinedClassName = [
     "anchor",
     `anchor__${variant}`,
     `anchor__underline-${underline}`,
     className,
-    isTextLink ? "anchor__text-link" : null,
+    isTextLink && "anchor__text-link",
+    detectedLinkType !== "intern" && `anchor__${detectedLinkType}`,
   ]
     .filter(Boolean)
     .join(" ");
-   // Default Text, falls nichts vorhanden
-  const fallbackLabel = label || child || icon || "LINK";
+
+  // Default Text, falls nichts vorhanden
+  const fallbackLabel = label || children || "LINK";
 
   // SEO/Accessibility Defaults
-  const computedTitle = title || label;
-  const computedAriaLabel = ariaLabel || label;
-
-    // Prüfen, ob Mail oder Tel
-  const isMailLink = href.startsWith("mailto:");
-  const isTelLink = href.startsWith("tel:");
+  const computedTitle = title || (typeof label === "string" ? label : undefined);
+  const computedAriaLabel = ariaLabel || (typeof label === "string" ? label : undefined);
 
   // Target / Rel Logik
-  let computedTarget: AnchorProps["target"];
-  let computedRel: AnchorProps["rel"];
+  const { computedTarget, computedRel } = React.useMemo(() => {
+    let targetResult: AnchorProps["target"] = target;
+    let relResult: AnchorProps["rel"] = rel;
 
+    if (detectedLinkType === "mail" || detectedLinkType === "tel") {
+      targetResult = undefined;
+      relResult = undefined;
+    } else if (detectedLinkType === "extern" || detectedLinkType === "ugc") {
+      targetResult = target || "_blank";
+      relResult = rel || (detectedLinkType === "extern" 
+        ? "noopener noreferrer" 
+        : "noopener noreferrer nofollow");
+    }
 
-    if (isMailLink || isTelLink) {
-    computedTarget = undefined; // niemals _blank
-    computedRel = undefined;
-  } else {
-    computedTarget = linkType === "extern" || linkType === "ugc" ? "_blank" : target;
-    computedRel =
-      linkType === "extern"
-        ? "noopener noreferrer"
-        : linkType === "ugc"
-        ? "noopener noreferrer nofollow"
-        : rel;
-  }
+    return { computedTarget: targetResult, computedRel: relResult };
+  }, [detectedLinkType, target, rel]);
 
-  // Inhalt (Label, Icon, Optional child)
+  // Inhalt (Label, Icon, Optional children)
   const content = (
     <>
       {icon && iconPosition === "left" && (
-        <span className="anchor__icon--left">{icon}</span>
+        <span className="anchor__icon--left" aria-hidden="true">
+          {icon}
+        </span>
       )}
       {fallbackLabel}
       {icon && iconPosition === "right" && (
-        <span className="anchor__icon--right">{icon}</span>
+        <span className="anchor__icon--right" aria-hidden="true">
+          {icon}
+        </span>
       )}
     </>
   );
 
   // Interne Links => Next.js Link
-  if (linkType === "intern") {
+  if (detectedLinkType === "intern") {
     return (
       <Link
         href={href}
@@ -122,7 +133,7 @@ const AnchorComponent: FC<AnchorProps> = ({
     );
   }
 
-  // Externe/UGC Links => normales <a>
+  // Externe/UGC/Mail/Tel Links => normales <a>
   return (
     <a
       href={href}
@@ -140,11 +151,22 @@ const AnchorComponent: FC<AnchorProps> = ({
   );
 };
 
-// React.memo für Performance mit Vergleich
+// Verbesserte Performance-Optimierung
 const areEqual = (prev: AnchorProps, next: AnchorProps) => {
-  return Object.keys(prev).every(
-    key => prev[key as keyof AnchorProps] === next[key as keyof AnchorProps]
-  );
+  // Wichtige Props vergleichen
+  const keysToCompare: (keyof AnchorProps)[] = [
+    'href', 'linkType', 'target', 'rel', 'download', 'label', 
+    'title', 'ariaLabel', 'analyticsId', 'variant', 'underline', 
+    'isTextLink', 'className', 'icon', 'iconPosition', 'children'
+  ];
+
+  return keysToCompare.every(key => {
+    // Spezielle Behandlung für children
+    if (key === 'children') {
+      return prev.children === next.children;
+    }
+    return prev[key] === next[key];
+  });
 };
 
 const Anchor = memo(AnchorComponent, areEqual);
