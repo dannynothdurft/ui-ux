@@ -70,16 +70,27 @@ const AnchorComponent: FC<AnchorProps> = ({
   const computedTitle = title || label;
   const computedAriaLabel = ariaLabel || label;
 
-  // Target/Rel Logik
-  const computedTarget =
-    linkType === "extern" || linkType === "ugc" ? "_blank" : target;
+    // Prüfen, ob Mail oder Tel
+  const isMailLink = href.startsWith("mailto:");
+  const isTelLink = href.startsWith("tel:");
 
-  const computedRel =
-    linkType === "extern"
-      ? "noopener noreferrer"
-      : linkType === "ugc"
-      ? "noopener noreferrer nofollow"
-      : rel;
+  // Target / Rel Logik
+  let computedTarget: AnchorProps["target"];
+  let computedRel: AnchorProps["rel"];
+
+
+    if (isMailLink || isTelLink) {
+    computedTarget = undefined; // niemals _blank
+    computedRel = undefined;
+  } else {
+    computedTarget = linkType === "extern" || linkType === "ugc" ? "_blank" : target;
+    computedRel =
+      linkType === "extern"
+        ? "noopener noreferrer"
+        : linkType === "ugc"
+        ? "noopener noreferrer nofollow"
+        : rel;
+  }
 
   // Inhalt (Label, Icon, Optional Children)
   const content = (
