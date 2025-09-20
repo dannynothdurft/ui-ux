@@ -1,78 +1,139 @@
 "use client";
-import React, { FC, ReactNode, memo } from "react";
+import React, { FC, ReactNode } from "react";
 import Link from "next/link";
 
 interface AnchorProps {
+  // 🔗 Link-Props
+  href?: string;
   linkType?: "intern" | "extern" | "ugc";
-  children?: ReactNode;
-  href: string;
-  label: string | ReactNode;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  download?: boolean | string;
+  rel?: string;
+
+  // 🦾 SEO & Accessibility
+  label?: string;
   title?: string;
   ariaLabel?: string;
-  target?: "_blank" | "_self" | "_parent" | "_top";
-  rel?: string;
+  analyticsId?: string;
+
+  // 🎨 Style-Props (UI/UX)
+  variant?: "primary" | "secondary" | "default";
+  underline?: "always" | "hover" | "none";
+  isTextLink?: boolean;
   className?: string;
-  link?: boolean;
   icon?: ReactNode;
   iconPosition?: "left" | "right";
-  download?: boolean;
-  analyticsId?: string;
-  openInNewTabIcon?: boolean;
+
+  // 🧩 Content
+  children?: ReactNode;
 }
 
-const Anchor: FC<AnchorProps> = memo(
-  ({
-    linkType = "intern",
-    children,
-    href,
-    label,
-    title,
-    ariaLabel,
-    target,
-    rel,
+const AnchorComponent: FC<AnchorProps> = ({
+  // 🔗 Link-Props
+  href = '#',
+  linkType = "intern",
+  target,
+  rel,
+  download,
+
+  // 🦾 SEO & Accessibility
+  label,
+  title,
+  ariaLabel,
+  analyticsId,
+
+  // 🎨 Style-Props
+  variant = "default",
+  underline = "hover",
+  isTextLink,
+  className,
+  icon,
+  iconPosition = "left",
+
+  // 🧩 Content
+  children,
+}) => {
+  // CSS-Klassen zusammensetzen
+  const combinedClassName = [
+    "anchor",
+    `anchor__${variant}`,
+    `anchor__underline-${underline}`,
     className,
-    link,
-    icon,
-    iconPosition = "left",
-    download,
-    analyticsId,
-  }) => {
-    const combinedClassName = [
-      "ui-anchor",
-      className,
-      link ? "ui-anchor__text-link" : null,
-    ]
-      .filter(Boolean)
-      .join(" ");
+    isTextLink ? "anchor__text-link" : null,
+  ]
+    .filter(Boolean)
+    .join(" ");
+   // Default Text, falls nichts vorhanden
+  const fallbackLabel = label || children || icon || "LINK";
+
+  // SEO/Accessibility Defaults
+  const computedTitle = title || label;
+  const computedAriaLabel = ariaLabel || label;
+
+  // Target/Rel Logik
+  const computedTarget =
+    linkType === "extern" || linkType === "ugc" ? "_blank" : target;
+
+  const computedRel =
+    linkType === "extern"
+      ? "noopener noreferrer"
+      : linkType === "ugc"
+      ? "noopener noreferrer nofollow"
+      : rel;
+
+  // Inhalt (Label, Icon, Optional Children)
+  const content = (
+    <>
+      {icon && iconPosition === "left" && (
+        <span className="anchor__icon--left">{icon}</span>
+      )}
+      {fallbackLabel}
+      {icon && iconPosition === "right" && (
+        <span className="anchor__icon--right">{icon}</span>
+      )}
+    </>
+  );
+
+  // Interne Links => Next.js Link
+  if (linkType === "intern") {
     return (
       <Link
         href={href}
         className={combinedClassName}
-        title={title || label?.toString()}
-        aria-label={ariaLabel || label?.toString()}
-        target={target}
-        download={download ? true : undefined}
+        title={computedTitle}
+        aria-label={computedAriaLabel}
         data-analytics={analyticsId}
-        rel={
-          linkType === "extern"
-            ? "noopener noreferrer"
-            : linkType === "ugc"
-            ? "noopener noreferrer nofollow"
-            : rel
-        }
       >
-        {icon && iconPosition === "left" && (
-          <span className="ui-anchor__icon--left">{icon}</span>
-        )}
-        {children && children}
-        {label}
-        {icon && iconPosition === "right" && (
-          <span className="ui-anchor__icon--right">{icon}</span>
-        )}
+        {content}
       </Link>
     );
   }
-);
+
+  // Externe/UGC Links => normales <a>
+  return (
+    <a
+      href={href}
+      className={combinedClassName}
+      title={computedTitle}
+      aria-label={computedAriaLabel}
+      target={computedTarget}
+      rel={computedRel}
+      download={download}
+      data-analytics={analyticsId}
+    >
+      {content}
+    </a>
+  );
+};
+
+// React.memo für Performance mit Vergleich
+const areEqual = (prev: AnchorProps, next: AnchorProps) => {
+  return Object.keys(prev).every(
+    key => prev[key as keyof AnchorProps] === next[key as keyof AnchorProps]
+  );
+};
+
+const Anchor = React.memo(AnchorComponent, areEqual);
 
 Anchor.displayName = "Anchor";
 
