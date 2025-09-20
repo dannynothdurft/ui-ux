@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import Anchor from "./Anchor";
 import { ExternalLink } from '@/lib/svg';
 import Image from "next/image";
