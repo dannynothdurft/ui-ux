@@ -109,7 +109,7 @@
   &__dropdown {
     position: absolute;
     top: calc(100% + 4px);
-    left: 0;
+    right: 0;
     min-width: 220px;
     background: $color-background-primary;
     border: 1px solid $color-border-secondary;
@@ -165,11 +165,10 @@
   }
 
   &__mega-menu {
-    position: absolute;
-    top: calc(100% + 4px);
-    left: 50%;
-    width: 90vw;
-    max-width: 1000px;
+    position: fixed;
+    top: 2.8;
+    right: 0;
+    width: 100vw;
     background: $color-background-primary;
     border: 1px solid $color-border-secondary;
     border-radius: $border-radius-xl;
@@ -185,10 +184,14 @@
   }
 
   &__mega-menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: $spacing-md;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-md;
+
+  @media (max-width: $xl) {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
   &__mega-menu-section {
     display: flex;
