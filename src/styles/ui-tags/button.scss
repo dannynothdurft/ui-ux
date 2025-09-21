@@ -1,0 +1,305 @@
+// =============================================================================
+// MODERN BUTTON-KOMPONENTE
+// =============================================================================
+
+.button {
+  // Layout
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+  
+  // Typografie
+  font-family: $font-family-base;
+  font-weight: $font-weight-semibold;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  
+  // Darstellung
+  border: 2px solid transparent;
+  border-radius: $border-radius-lg;
+  outline: none;
+  
+  // Animation
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  
+  // Hover-Effekt mit Pseudoelement
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  // Größen
+  &__small {
+    font-size: $font-size-sm;
+    padding: $spacing-sm $spacing-md;
+    min-height: 2.5rem;
+  }
+  
+  &__medium {
+    font-size: $font-size-md;
+    padding: $spacing-md $spacing-lg;
+    min-height: 3rem;
+  }
+  
+  &__large {
+    font-size: $font-size-lg;
+    padding: $spacing-lg $spacing-xl;
+    min-height: 3.5rem;
+  }
+  
+  // Varianten - Modern mit Verläufen und Schatten
+  &__primary {
+    background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+    color: $color-white;
+    box-shadow: 0 4px 12px color-opacity($color-primary, 0.3);
+    
+    &:hover {
+      background: linear-gradient(135deg, $color-primary-dark, $color-primary);
+      box-shadow: 0 6px 16px color-opacity($color-primary, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px color-opacity($color-primary, 0.2);
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 4px color-opacity($color-primary, 0.3);
+    }
+  }
+  
+  &__secondary {
+    background: linear-gradient(135deg, $color-secondary, $color-secondary-dark);
+    color: $color-white;
+    box-shadow: 0 4px 12px color-opacity($color-secondary, 0.3);
+    
+    &:hover {
+      background: linear-gradient(135deg, $color-secondary-dark, $color-secondary);
+      box-shadow: 0 6px 16px color-opacity($color-secondary, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px color-opacity($color-secondary, 0.2);
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 4px color-opacity($color-secondary, 0.3);
+    }
+  }
+  
+  &__outline {
+    background: transparent;
+    color: $color-primary;
+    border-color: $color-primary;
+    box-shadow: 0 2px 8px color-opacity($color-primary, 0.1);
+    
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+      box-shadow: 0 4px 12px color-opacity($color-primary, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px color-opacity($color-primary, 0.1);
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 4px color-opacity($color-primary, 0.2);
+    }
+  }
+  
+  &__ghost {
+    background: transparent;
+    color: $color-text-primary;
+    border-color: transparent;
+    
+    &:hover {
+      background: $color-gray-100;
+      box-shadow: 0 4px 12px color-opacity($color-gray-300, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      background: $color-gray-200;
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 4px color-opacity($color-gray-300, 0.1);
+    }
+  }
+  
+  // Erfolgs-, Warn- und Error-Varianten mit modernem Look
+  &__success {
+    background: linear-gradient(135deg, $color-success, darken($color-success, 10%));
+    color: $color-white;
+    box-shadow: 0 4px 12px color-opacity($color-success, 0.3);
+    
+    &:hover {
+      background: linear-gradient(135deg, darken($color-success, 10%), $color-success);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px color-opacity($color-success, 0.4);
+    }
+  }
+  
+  &__warning {
+    background: linear-gradient(135deg, $color-warning, darken($color-warning, 10%));
+    color: $color-white;
+    box-shadow: 0 4px 12px color-opacity($color-warning, 0.3);
+    
+    &:hover {
+      background: linear-gradient(135deg, darken($color-warning, 10%), $color-warning);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px color-opacity($color-warning, 0.4);
+    }
+  }
+  
+  &__error {
+    background: linear-gradient(135deg, $color-error, darken($color-error, 10%));
+    color: $color-white;
+    box-shadow: 0 4px 12px color-opacity($color-error, 0.3);
+    
+    &:hover {
+      background: linear-gradient(135deg, darken($color-error, 10%), $color-error);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px color-opacity($color-error, 0.4);
+    }
+  }
+  
+  // Glassmorphism Variante (sehr modern)
+  &__glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: $color-text-primary;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  // Icons mit modernem Styling
+  &__icon--left,
+  &__icon--right {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: transform 0.3s ease;
+  }
+  
+  &__icon--left {
+    order: 1;
+  }
+  
+  &__icon--right {
+    order: 3;
+  }
+  
+  &__content {
+    order: 2;
+  }
+  
+  // Hover-Effekte für Icons
+  &:hover &__icon--left {
+    transform: translateX(-2px);
+  }
+  
+  &:hover &__icon--right {
+    transform: translateX(2px);
+  }
+  
+  // Zustände
+  &[disabled],
+  &__disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+    transform: none !important;
+  }
+  
+  // Loading Animation modern
+  &__loading {
+    position: relative;
+    color: transparent !important;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 2px solid;
+      border-color: currentColor transparent currentColor transparent;
+      border-radius: 50%;
+      animation: button-spin 1.2s linear infinite;
+    }
+  }
+  
+  // Vollbreite Button
+  &__full-width {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  // Runder Button für Icons only
+  &__circle {
+    border-radius: 50%;
+    padding: $spacing-md;
+    aspect-ratio: 1/1;
+    
+    &.button__small {
+      padding: $spacing-sm;
+    }
+    
+    &.button__large {
+      padding: $spacing-lg;
+    }
+  }
+}
+
+// Moderne Loading Animation
+@keyframes button-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Hover-Effekt für Glass-Buttons
+@keyframes glass-shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

@@ -1,13 +1,14 @@
 // Variablen importieren
-@import './variables/breakpoints';
-@import './variables/colors';
-@import './variables/spacing';
-@import './variables/typography';
-@import './variables/effects';
-@import './variables/_variables';
+@import './variables/breakpoints.scss';
+@import './variables/colors.scss';
+@import './variables/spacing.scss';
+@import './variables/typography.scss';
+@import './variables/effects.scss';
+@import './variables/_variables.scss';
 
 // Reset importieren
 @import 'reset';
 
 // HTML TAGS
 @import './ui-tags/anchor.scss';
+@import './ui-tags/button.scss';
