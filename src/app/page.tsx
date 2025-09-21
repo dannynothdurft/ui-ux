@@ -2,6 +2,37 @@ import { Section, SectionContent,SectionItem, SectionImage, SectionText, } from 
 
 export default function Home() {
   return (<>
+    <Section>
+        <SectionContent>
+          <SectionItem>
+            <SectionText>
+              <h1 className="gradient-text">
+            Echtzeit Website Monitoring – Sofortige Statusberichte für maximale
+            Verfügbarkeit
+          </h1>
+          <p>
+            QuickStatus bietet dir Echtzeit-Website-Monitoring, sofortige
+            Ausfall-Benachrichtigungen und sorgt dafür, dass deine Website 24/7
+            stabil und zuverlässig online bleibt.
+          </p>
+
+            </SectionText>
+          </SectionItem>
+          <SectionItem>
+            <SectionImage src="/image.png" 
+        alt="Beschreibung" 
+        aspectRatio="landscape"
+              objectFit="cover"
+            width={1000}
+            height={1000}
+            priority
+           fullWidth
+              
+            />
+            
+          </SectionItem>
+        </SectionContent>
+      </Section>
 <Section padding="large">
   <SectionContent layout="grid-4" gap="md" verticalAlign="stretch">
 
