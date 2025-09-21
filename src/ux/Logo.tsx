@@ -1,8 +1,7 @@
 "use client";
-import React, { FC, memo } from "react";
+import React, { FC, memo, AnchorHTMLAttributes } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
 
 interface LogoProps {
   // 🎨 Erscheinungsbild
@@ -18,7 +17,7 @@ interface LogoProps {
   
   // 🔗 Link
   href?: string;
-  linkProps?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
+  linkProps?: AnchorHTMLAttributes<HTMLAnchorElement>;
   
   // 📝 Text-Alternative (falls SVG/Image)
   companyName?: string;
@@ -31,6 +30,9 @@ interface LogoProps {
   
   // ♿ Accessibility
   title?: string;
+  
+  // 📱 Responsive Verhalten
+  responsive?: boolean;
 }
 
 const LogoComponent: FC<LogoProps> = ({
@@ -60,16 +62,28 @@ const LogoComponent: FC<LogoProps> = ({
   
   // ♿ Accessibility
   title,
+  
+  // 📱 Responsive
+  responsive = false,
 }) => {
-  // Größen-Konfiguration
-  const sizeConfig = {
-    sm: { icon: 24, text: 80, spacing: "gap-1" },
-    md: { icon: 32, text: 100, spacing: "gap-2" },
-    lg: { icon: 48, text: 120, spacing: "gap-2" },
-    xl: { icon: 64, text: 150, spacing: "gap-3" },
-  };
+  // CSS-Klassen basierend auf Props
+  const logoClasses = [
+    "logo",
+    `logo--${variant}`,
+    `logo--${size}`,
+    responsive ? "logo--responsive" : "",
+    className
+  ].filter(Boolean).join(" ");
 
-  const currentSize = sizeConfig[size];
+  const iconClasses = [
+    "logo__icon",
+    iconClassName
+  ].filter(Boolean).join(" ");
+
+  const textClasses = [
+    "logo__text-container",
+    textClassName
+  ].filter(Boolean).join(" ");
 
   // Logo-Inhalt rendern
   const renderLogoContent = () => {
@@ -79,9 +93,9 @@ const LogoComponent: FC<LogoProps> = ({
         <Image
           src={fullSrc}
           alt={alt}
-          width={currentSize.text}
-          height={currentSize.icon}
-          className={className}
+          width={100}
+          height={40}
+          className={logoClasses}
           title={title}
         />
       );
@@ -93,9 +107,9 @@ const LogoComponent: FC<LogoProps> = ({
         <Image
           src={iconSrc}
           alt={alt}
-          width={currentSize.icon}
-          height={currentSize.icon}
-          className={`${className} ${iconClassName}`}
+          width={40}
+          height={40}
+          className={`${logoClasses} ${iconClasses}`}
           title={title}
         />
       );
@@ -107,9 +121,9 @@ const LogoComponent: FC<LogoProps> = ({
         <Image
           src={textSrc}
           alt={companyName}
-          width={currentSize.text}
-          height={currentSize.icon}
-          className={`${className} ${textClassName}`}
+          width={120}
+          height={40}
+          className={`${logoClasses} ${textClasses}`}
           title={title}
         />
       );
@@ -117,20 +131,20 @@ const LogoComponent: FC<LogoProps> = ({
 
     // Fallback: SVG oder Text-Logo
     return (
-      <div className={`flex ${variant === "horizontal" ? "flex-row items-center" : "flex-col items-center"} ${currentSize.spacing} ${className}`}>
+      <div className={logoClasses}>
         {/* Icon Bereich */}
         {(type === "icon" || type === "full") && (
-          <div className={`flex items-center justify-center ${iconClassName}`}>
+          <div className={iconClasses}>
             {iconSrc ? (
               <Image
                 src={iconSrc}
                 alt=""
-                width={currentSize.icon}
-                height={currentSize.icon}
+                width={40}
+                height={40}
               />
             ) : (
-              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold">
-                C
+              <div className="logo__fallback-icon">
+                {companyName.charAt(0)}
               </div>
             )}
           </div>
@@ -138,12 +152,12 @@ const LogoComponent: FC<LogoProps> = ({
 
         {/* Text Bereich */}
         {(type === "text" || type === "full") && (
-          <div className={`flex flex-col ${textClassName}`}>
-            <span className="font-bold text-gray-900 text-lg leading-tight">
+          <div className={textClasses}>
+            <span className="logo__text">
               {companyName}
             </span>
             {tagline && (
-              <span className="text-xs text-gray-600 mt-1">{tagline}</span>
+              <span className="logo__tagline">{tagline}</span>
             )}
           </div>
         )}
@@ -156,7 +170,7 @@ const LogoComponent: FC<LogoProps> = ({
     return (
       <Link
         href={href}
-        className="inline-flex focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+        className="logo-link"
         title={title || `Zur Startseite von ${companyName}`}
         {...linkProps}
       >
@@ -175,7 +189,7 @@ const areEqual = (prev: LogoProps, next: LogoProps) => {
     'type', 'variant', 'size', 'iconSrc', 'textSrc', 
     'fullSrc', 'alt', 'href', 
     'linkProps', 'companyName', 'tagline', 'className', 'iconClassName',
-    'textClassName', 'title'
+    'textClassName', 'title', 'responsive'
   ];
     
   return keysToCompare.every(key => {

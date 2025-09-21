@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
-import Logo from "./Logo";
+import Logo from './Logo';
 
 const meta: Meta<typeof Logo> = {
   title: "UX/Logo",
@@ -13,17 +13,41 @@ const meta: Meta<typeof Logo> = {
     type: {
       control: "select",
       options: ["icon", "text", "full"],
-      description: "Logo-Typ",
+      description: "Art des Logos",
     },
     variant: {
-      control: "radio",
+      control: "select",
       options: ["horizontal", "vertical"],
-      description: "Ausrichtung",
+      description: "Ausrichtung der Logo-Elemente",
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl"],
-      description: "Größe",
+      description: "Größe des Logos",
+    },
+    responsive: {
+      control: "boolean",
+      description: "Responsives Verhalten auf mobilen Geräten",
+    },
+    companyName: {
+      control: "text",
+      description: "Firmenname für Text-Logo",
+    },
+    tagline: {
+      control: "text",
+      description: "Tagline unter dem Firmennamen",
+    },
+    href: {
+      control: "text",
+      description: "Link-Ziel",
+    },
+    alt: {
+      control: "text",
+      description: "Alt-Text für Bild-Logos",
+    },
+    className: {
+      control: "text",
+      description: "Zusätzliche CSS-Klassen",
     },
   },
 };
@@ -31,156 +55,125 @@ const meta: Meta<typeof Logo> = {
 export default meta;
 type Story = StoryObj<typeof Logo>;
 
-// ✅ Default Logo
+// ✅ Standard-Logo
 export const Default: Story = {
   args: {
-    companyName: "QuickStatus",
-    tagline: "Real-Time Monitoring",
+    companyName: "MyCompany",
+    tagline: "Premium Solutions",
   },
 };
 
-// ✅ Verschiedene Typen
-export const Types: Story = {
-  render: () => (
-    <div className="flex flex-col gap-6 items-center">
-      <Logo type="icon" companyName="QuickStatus" />
-      <Logo type="text" companyName="QuickStatus" />
-      <Logo type="full" companyName="QuickStatus" tagline="Real-Time Monitoring" />
-    </div>
-  ),
+// ✅ Nur Icon
+export const IconOnly: Story = {
+  args: {
+    type: "icon",
+    companyName: "MyCompany",
+    iconSrc: "/logo/icon.svg",
+  },
 };
 
-// ✅ Verschiedene Ausrichtungen
-export const Variants: Story = {
-  render: () => (
-    <div className="flex gap-8 items-start">
-      <Logo variant="horizontal" companyName="QuickStatus" tagline="Horizontal" />
-      <Logo variant="vertical" companyName="QuickStatus" tagline="Vertical" />
-    </div>
-  ),
+// ✅ Nur Text
+export const TextOnly: Story = {
+  args: {
+    type: "text",
+    companyName: "MyCompany",
+    tagline: "Premium Solutions",
+  },
+};
+
+// ✅ Vertikale Ausrichtung
+export const Vertical: Story = {
+  args: {
+    variant: "vertical",
+    companyName: "MyCompany",
+    tagline: "Premium Solutions",
+  },
 };
 
 // ✅ Verschiedene Größen
 export const Sizes: Story = {
   render: () => (
-    <div className="flex gap-6 items-end">
-      <Logo size="sm" companyName="QS" />
-      <Logo size="md" companyName="QuickStatus" />
-      <Logo size="lg" companyName="QuickStatus" tagline "Monitoring" />
-      <Logo size="xl" companyName="QuickStatus" tagline="Real-Time Monitoring" />
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", alignItems: "center" }}>
+      <Logo size="sm" companyName="Small" />
+      <Logo size="md" companyName="Medium" />
+      <Logo size="lg" companyName="Large" />
+      <Logo size="xl" companyName="X-Large" />
     </div>
   ),
 };
 
-// ✅ Mit Bildern
-export const WithImages: Story = {
-  render: () => (
-    <div className="flex flex-col gap-4">
-      <Logo
-        type="icon"
-        iconSrc="/logo-icon.png"
-        alt="QuickStatus Icon"
-      />
-      <Logo
-        type="text"
-        textSrc="/logo-text.png"
-        alt="QuickStatus Text"
-      />
-      <Logo
-        type="full"
-        fullSrc="/logo-full.png"
-        alt="QuickStatus Full Logo"
-      />
-    </div>
-  ),
-};
-
-// ✅ Mit Link
-export const WithLink: Story = {
+// ✅ Als Link
+export const AsLink: Story = {
   args: {
     href: "/",
-    companyName: "QuickStatus",
-    tagline: "Click me!",
+    companyName: "MyCompany",
+    tagline: "Click to go home",
   },
 };
 
-// ✅ Accessibility
-export const Accessibility: Story = {
-  render: () => (
-    <div className="flex flex-col gap-4">
-      <Logo
-        companyName="QuickStatus"
-        title="QuickStatus - Website Monitoring"
-        alt="QuickStatus Logo"
-      />
-      <Logo
-        companyName="QuickStatus"
-        tagline="Screen Reader Friendly"
-        href="/"
-        linkProps={{ "aria-label": "Zur Startseite" }}
-      />
-    </div>
-  ),
+// ✅ Responsive Logo
+export const Responsive: Story = {
+  args: {
+    responsive: true,
+    companyName: "MyCompany",
+    tagline: "Responsive Logo",
+  },
 };
 
-// ✅ Custom Styling
-export const CustomStyle: Story = {
-  render: () => (
-    <div className="flex flex-col gap-4">
-      <Logo
-        companyName="QuickStatus"
-        className="p-4 bg-gray-100 rounded-lg"
-        iconClassName="text-blue-600"
-        textClassName="text-gray-800"
-      />
-      <Logo
-        companyName="QuickStatus"
-        variant="vertical"
-        className="border-2 border-dashed border-gray-300 p-4"
-      />
-    </div>
-  ),
+// ✅ Mit benutzerdefinierten Klassen
+export const CustomStyled: Story = {
+  args: {
+    companyName: "MyCompany",
+    className: "custom-logo",
+    iconClassName: "custom-icon",
+    textClassName: "custom-text",
+  },
+};
+
+// ✅ Playground für interaktive Tests
+export const Playground: Story = {
+  args: {
+    type: "full",
+    variant: "horizontal",
+    size: "md",
+    companyName: "MyCompany",
+    tagline: "Your tagline here",
+    responsive: false,
+  },
+};
+
+// ✅ Logo mit Bildquellen (Mock)
+export const WithImages: Story = {
+  args: {
+    iconSrc: "/logo/icon.svg",
+    textSrc: "/text-logo.png",
+    fullSrc: "/full-logo.png",
+    alt: "MyCompany Logo",
+    companyName: "MyCompany",
+  },
+};
+
+// ✅ Dark Mode kompatibel
+export const DarkMode: Story = {
+  args: {
+    companyName: "MyCompany",
+    tagline: "Dark Mode Ready",
+  },
+  parameters: {
+    backgrounds: { default: "dark" },
+  },
 };
 
 // ✅ Komplexes Beispiel
 export const ComplexExample: Story = {
-  render: () => (
-    <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl">
-      <header className="flex items-center justify-between">
-        <Logo
-          type="full"
-          variant="horizontal"
-          size="lg"
-          companyName="QuickStatus"
-          tagline="Premium Monitoring"
-          href="/"
-          className="hover:scale-105 transition-transform"
-        />
-        
-        <nav className="flex gap-4">
-          <Logo
-            type="icon"
-            size="sm"
-            companyName="QS"
-            href="/dashboard"
-            className="opacity-70 hover:opacity-100"
-          />
-        </nav>
-      </header>
-    </div>
-  ),
-};
-
-// ✅ Responsive Beispiel
-export const Responsive: Story = {
-  render: () => (
-    <div className="flex flex-col gap-4">
-      <div className="text-sm text-gray-600 mb-2">⬇️ Responsive Verhalten</div>
-      <Logo
-        companyName="QuickStatus"
-        tagline="Adapts to container"
-        className="max-w-full"
-      />
-    </div>
-  ),
+  args: {
+    type: "full",
+    variant: "vertical",
+    size: "lg",
+    href: "/",
+    companyName: "TechCorp",
+    tagline: "Innovation & Excellence",
+    responsive: true,
+    title: "Visit TechCorp Homepage",
+  },
 };
