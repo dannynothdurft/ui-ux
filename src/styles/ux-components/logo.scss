@@ -156,11 +156,11 @@
   // Dark Mode
   @media (prefers-color-scheme: dark) {
     .logo__text {
-      color: $color-text-inverse;
+      color: $color-text-secondary;
     }
     
     .logo__tagline {
-      color: $color-text-secondary;
+      color: $color-text-tertiary;
     }
   }
 }
