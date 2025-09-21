@@ -1,4 +1,5 @@
 import Anchor from "@/ui/Anchor";
+import Button from '@/ui/Button';
 import { ExternalLink } from '@/lib/svg';
 
 export default function Home() {
@@ -33,6 +34,10 @@ export default function Home() {
         iconPosition="left"
       >
         <span className="anchor__icon--right">🔗</span>
+      </Anchor>
+
+      <Anchor href="/hdi" >
+         <Button child={"Link Button"} size='small'/>
       </Anchor>
     </div>
   </>

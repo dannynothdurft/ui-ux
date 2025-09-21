@@ -32,7 +32,7 @@ type Story = StoryObj<typeof Button>;
 // ✅ Default Button
 export const Default: Story = {
   args: {
-    children: "Default Button",
+    child: "Default Button",
     variant: "primary",
   },
 };
@@ -41,13 +41,13 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="success">Success</Button>
-      <Button variant="warning">Warning</Button>
-      <Button variant="error">Error</Button>
+      <Button variant="primary" child="Primary" />
+      <Button variant="secondary" child="secondary" />
+      <Button variant="outline" child="outline" />
+      <Button variant="ghost" child="ghost" />
+      <Button variant="success" child="success" />
+      <Button variant="warning" child="warning" />
+      <Button variant="error" child="error" />
     </div>
   ),
 };
@@ -56,9 +56,9 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex items-end gap-4">
-      <Button size="small">Small</Button>
-      <Button size="medium">Medium</Button>
-      <Button size="large">Large</Button>
+      <Button size="small"  child="Small" />
+      <Button size="medium"  child="Medium" />
+      <Button size="large"  child="Large" />
     </div>
   ),
 };
@@ -67,12 +67,8 @@ export const Sizes: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Button icon={<ExternalLink />} iconPosition="left">
-        Left Icon
-      </Button>
-      <Button icon={<ExternalLink />} iconPosition="right">
-        Right Icon
-      </Button>
+      <Button icon={<ExternalLink />} iconPosition="left" child="Icon Left" />
+      <Button icon={<ExternalLink />} iconPosition="right" child="Icon Right" />
     </div>
   ),
 };
@@ -80,7 +76,7 @@ export const WithIcons: Story = {
 // ✅ Loading State
 export const Loading: Story = {
   args: {
-    children: "Loading Button",
+    child: "Loading Button",
     loading: true,
   },
 };
@@ -88,7 +84,7 @@ export const Loading: Story = {
 // ✅ Disabled State
 export const Disabled: Story = {
   args: {
-    children: "Disabled Button",
+    child: "Disabled Button",
     disabled: true,
   },
 };
@@ -96,7 +92,7 @@ export const Disabled: Story = {
 // ✅ Full Width
 export const FullWidth: Story = {
   args: {
-    children: "Full Width Button",
+    child: "Full Width Button",
     fullWidth: true,
   },
   parameters: {
@@ -108,15 +104,9 @@ export const FullWidth: Story = {
 export const Combined: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Button variant="primary" size="large" icon={<ExternalLink />}>
-        Large Primary with Icon
-      </Button>
-      <Button variant="outline" loading>
-        Loading Outline
-      </Button>
-      <Button variant="success" disabled>
-        Disabled Success
-      </Button>
+      <Button variant="primary" size="large" icon={<ExternalLink />} child="Large Primary with Icon" />
+      <Button variant="outline" loading child="Loading Outline" />
+      <Button variant="success" disabled child="disamble success" />
     </div>
   ),
 };

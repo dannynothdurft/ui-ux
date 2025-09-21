@@ -17,7 +17,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   
   // 🧩 Content
-  children: ReactNode;
+  child: ReactNode;
 }
 
 const ButtonComponent: FC<ButtonProps> = ({
@@ -34,8 +34,9 @@ const ButtonComponent: FC<ButtonProps> = ({
   loading = false,
   disabled = false,
   
+  
   // 🧩 Content
-  children,
+  child,
   
   // HTML Attributes
   ...rest
@@ -62,7 +63,7 @@ const ButtonComponent: FC<ButtonProps> = ({
       )}
       
       <span className="button__content">
-        {children}
+        {child}
       </span>
       
       {icon && iconPosition === "right" && (
@@ -97,7 +98,7 @@ const areEqual = (prev: ButtonProps, next: ButtonProps) => {
     prev.iconPosition === next.iconPosition &&
     prev.loading === next.loading &&
     prev.disabled === next.disabled &&
-    prev.children === next.children
+    prev.child === next.child
   );
 };
 

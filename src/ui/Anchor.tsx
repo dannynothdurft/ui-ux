@@ -23,6 +23,10 @@ interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   className?: string;
   icon?: ReactNode;
   iconPosition?: "left" | "right";
+  
+  // ✅ NEU: Button-Look Props
+  buttonVariant?: "primary" | "secondary" | "outline" | "ghost" | "success" | "warning" | "error" | "glass";
+  buttonSize?: "small" | "medium" | "large";
 
   // 🧩 Content
   children?: ReactNode;
@@ -49,6 +53,10 @@ const AnchorComponent: FC<AnchorProps> = ({
   className,
   icon,
   iconPosition = "left",
+  
+  // ✅ NEU: Button-Look Props
+  buttonVariant,
+  buttonSize,
 
   // 🧩 Content
   children,
@@ -63,11 +71,12 @@ const AnchorComponent: FC<AnchorProps> = ({
     return "extern";
   }, [href, linkType]);
 
-  // CSS-Klassen zusammensetzen
+  // ✅ CSS-Klassen mit Button-Look
   const combinedClassName = [
     "anchor",
-    `anchor__${variant}`,
-    `anchor__underline-${underline}`,
+    buttonVariant ? `button__${buttonVariant}` : `anchor__${variant}`,
+    buttonSize && `button__${buttonSize}`,
+    !buttonVariant && `anchor__underline-${underline}`,
     className,
     isTextLink && "anchor__text-link",
     detectedLinkType !== "intern" && `anchor__${detectedLinkType}`,
@@ -100,17 +109,17 @@ const AnchorComponent: FC<AnchorProps> = ({
     return { computedTarget: targetResult, computedRel: relResult };
   }, [detectedLinkType, target, rel]);
 
-  // Inhalt (Label, Icon, Optional children)
+  // ✅ Inhalt mit Button-Styling für Icons
   const content = (
     <>
       {icon && iconPosition === "left" && (
-        <span className="anchor__icon--left" aria-hidden="true">
+        <span className={buttonVariant ? "button__icon--left" : "anchor__icon--left"} aria-hidden="true">
           {icon}
         </span>
       )}
       {fallbackLabel}
       {icon && iconPosition === "right" && (
-        <span className="anchor__icon--right" aria-hidden="true">
+        <span className={buttonVariant ? "button__icon--right" : "anchor__icon--right"} aria-hidden="true">
           {icon}
         </span>
       )}
@@ -157,7 +166,8 @@ const areEqual = (prev: AnchorProps, next: AnchorProps) => {
   const keysToCompare: (keyof AnchorProps)[] = [
     'href', 'linkType', 'target', 'rel', 'download', 'label', 
     'title', 'ariaLabel', 'analyticsId', 'variant', 'underline', 
-    'isTextLink', 'className', 'icon', 'iconPosition', 'children'
+    'isTextLink', 'className', 'icon', 'iconPosition', 'children',
+    'buttonVariant', 'buttonSize' // ✅ NEU
   ];
 
   return keysToCompare.every(key => {
