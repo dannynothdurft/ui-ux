@@ -239,16 +239,10 @@ export const AutoDetection: Story = {
 export const ContentTypes: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Anchor href="/">
-        Nur Children (span)
-      </Anchor>
+      <Anchor href="/" child={"Nur Children (span)"} />
       <Anchor href="/" label="Nur Label" />
-      <Anchor href="/" label="Label wird ignoriert">
-        Children haben Priorität
-      </Anchor>
-      <Anchor href="/" buttonVariant="primary" label="Button mit Children">
-        <span>Custom Content</span>
-      </Anchor>
+      <Anchor href="/" label="Label wird ignoriert" child={"Children haben Priorität"} />
+      <Anchor href="/" buttonVariant="primary" label="Button mit Children" child={  <span>Custom Content</span>} />
     </div>
   ),
 };
@@ -362,7 +356,7 @@ export const CombinedExamples: Story = {
 export const Logo: Story = {
   args: {
     href: "/",
-    children: (
+    child: (
       <Image
         src="/images/quickstatus-logo-vertical.png"
         height={20}
@@ -379,7 +373,7 @@ export const ImageButton: Story = {
   args: {
     href: "/",
     buttonVariant: "ghost",
-    children: (
+    child: (
       <Image
         src="/images/quickstatus-logo-vertical.png"
         height={30}

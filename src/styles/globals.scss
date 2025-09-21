@@ -9,6 +9,9 @@
 // Reset importieren
 @import 'reset';
 
-// HTML TAGS
+// UI TAGS
 @import './ui-tags/anchor.scss';
 @import './ui-tags/button.scss';
+
+// UX Components
+@import './ux-components/logo.scss';

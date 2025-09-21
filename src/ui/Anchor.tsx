@@ -29,7 +29,7 @@ interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   buttonSize?: "small" | "medium" | "large";
 
   // 🧩 Content
-  children?: ReactNode;
+  child?: ReactNode;
 }
 
 const AnchorComponent: FC<AnchorProps> = ({
@@ -59,7 +59,7 @@ const AnchorComponent: FC<AnchorProps> = ({
   buttonSize,
 
   // 🧩 Content
-  children,
+  child,
   ...rest
 }) => {
   // Link-Typ basierend auf href automatisch erkennen, falls nicht explizit gesetzt
@@ -84,7 +84,7 @@ const AnchorComponent: FC<AnchorProps> = ({
     .join(" ");
 
   // Default Text, falls nichts vorhanden
-  const fallbackLabel = label || children || "LINK";
+  const fallbackLabel = label || child || "LINK";
 
   // SEO/Accessibility Defaults
   const computedTitle = title || (typeof label === "string" ? label : undefined);
@@ -165,14 +165,14 @@ const areEqual = (prev: AnchorProps, next: AnchorProps) => {
   const keysToCompare: (keyof AnchorProps)[] = [
     'href', 'linkType', 'target', 'rel', 'download', 'label', 
     'title', 'ariaLabel', 'analyticsId', 'variant', 'underline', 
-    'isTextLink', 'className', 'icon', 'iconPosition', 'children',
+    'isTextLink', 'className', 'icon', 'iconPosition', 'child',
     'buttonVariant', 'buttonSize' // ✅ NEU
   ];
 
   return keysToCompare.every(key => {
-    // Spezielle Behandlung für children
-    if (key === 'children') {
-      return prev.children === next.children;
+    // Spezielle Behandlung für child
+    if (key === 'child') {
+      return prev.child === next.child;
     }
     return prev[key] === next[key];
   });
