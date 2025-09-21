@@ -15,7 +15,17 @@ const meta: Meta<typeof Anchor> = {
     variant: {
       control: "select",
       options: ["primary", "secondary", "default", "success", "warning", "error"],
-      description: "Farbschema des Links",
+      description: "Farbschema des Links (für normale Links)",
+    },
+    buttonVariant: {
+      control: "select",
+      options: ["primary", "secondary", "outline", "ghost", "success", "warning", "error", "glass"],
+      description: "Button-Style für Button-Look",
+    },
+    buttonSize: {
+      control: "radio",
+      options: ["small", "medium", "large"],
+      description: "Größe für Button-Look",
     },
     underline: {
       control: "radio",
@@ -51,16 +61,72 @@ export const Default: Story = {
   },
 };
 
-// ✅ Alle Varianten
+// ✅ Alle Varianten (normale Links)
 export const AllVariants: Story = {
   render: () => (
-    <div>
-      <Anchor href="/" variant="primary" label="Primary Link" className='p-lg'/>
-      <Anchor href="/" variant="secondary" label="Secondary Link" className='p-lg'/>
-      <Anchor href="/" variant="default" label="Default Link" className='p-lg'/>
-      <Anchor href="/" variant="success" label="Success Link" className='p-lg'/>
-      <Anchor href="/" variant="warning" label="Warning Link" className='p-lg'/>
-      <Anchor href="/" variant="error" label="Error Link" className='p-lg'/>
+    <div className="flex flex-col gap-4">
+      <Anchor href="/" variant="primary" label="Primary Link" className="p-lg"/>
+      <Anchor href="/" variant="secondary" label="Secondary Link" className="p-lg"/>
+      <Anchor href="/" variant="default" label="Default Link" className="p-lg"/>
+      <Anchor href="/" variant="success" label="Success Link" className="p-lg"/>
+      <Anchor href="/" variant="warning" label="Warning Link" className="p-lg"/>
+      <Anchor href="/" variant="error" label="Error Link" className="p-lg"/>
+    </div>
+  ),
+};
+
+// ✅ Button Varianten (NEU)
+export const ButtonVariants: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <Anchor href="/" buttonVariant="primary" label="Primary Button" />
+      <Anchor href="/" buttonVariant="secondary" label="Secondary Button" />
+      <Anchor href="/" buttonVariant="outline" label="Outline Button" />
+      <Anchor href="/" buttonVariant="ghost" label="Ghost Button" />
+      <Anchor href="/" buttonVariant="success" label="Success Button" />
+      <Anchor href="/" buttonVariant="warning" label="Warning Button" />
+      <Anchor href="/" buttonVariant="error" label="Error Button" />
+      <Anchor href="/" buttonVariant="glass" label="Glass Button" />
+    </div>
+  ),
+};
+
+// ✅ Button Größen (NEU)
+export const ButtonSizes: Story = {
+  render: () => (
+    <div className="flex items-end gap-4">
+      <Anchor href="/" buttonVariant="primary" buttonSize="small" label="Small" />
+      <Anchor href="/" buttonVariant="primary" buttonSize="medium" label="Medium" />
+      <Anchor href="/" buttonVariant="primary" buttonSize="large" label="Large" />
+    </div>
+  ),
+};
+
+// ✅ Button mit Icons (NEU)
+export const ButtonWithIcons: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <Anchor 
+        href="/" 
+        buttonVariant="primary"
+        label="Left Icon Button" 
+        icon={<ExternalLink />} 
+        iconPosition="left" 
+      />
+      <Anchor 
+        href="/" 
+        buttonVariant="secondary"
+        label="Right Icon Button" 
+        icon={<ExternalLink />} 
+        iconPosition="right" 
+      />
+      <Anchor 
+        href="/" 
+        buttonVariant="outline"
+        icon={<ExternalLink />}
+        iconPosition="left"
+        label="Icon Only"
+      />
     </div>
   ),
 };
@@ -68,10 +134,10 @@ export const AllVariants: Story = {
 // ✅ Underline Varianten
 export const UnderlineVariants: Story = {
   render: () => (
-    <div>
-      <Anchor href="/" underline="always" label="Always Underline" className='p-lg'/>
-      <Anchor href="/" underline="hover" label="Hover Underline" className='p-lg'/>
-      <Anchor href="/" underline="none" label="No Underline" className='p-lg'/>
+    <div className="flex flex-col gap-4">
+      <Anchor href="/" underline="always" label="Always Underline" className="p-lg"/>
+      <Anchor href="/" underline="hover" label="Hover Underline" className="p-lg"/>
+      <Anchor href="/" underline="none" label="No Underline" className="p-lg"/>
     </div>
   ),
 };
@@ -79,29 +145,21 @@ export const UnderlineVariants: Story = {
 // ✅ Icon Varianten
 export const IconVariants: Story = {
   render: () => (
-    <div>
+    <div className="flex flex-col gap-4">
       <Anchor 
         href="/" 
         label="Left Icon" 
         icon={<ExternalLink />} 
         iconPosition="left" 
-        className='p-lg'
+        className="p-lg"
       />
       <Anchor 
         href="/" 
         label="Right Icon" 
         icon={<ExternalLink />} 
         iconPosition="right" 
-        className='p-lg'
+        className="p-lg"
       />
-      <Anchor 
-        href="/" 
-        icon={<ExternalLink />}
-        iconPosition="left"
-        className='p-lg'
-      >
-        <span className="anchor__icon--right">🔗</span>
-      </Anchor>
     </div>
   ),
 };
@@ -136,6 +194,34 @@ export const LinkTypes: Story = {
   ),
 };
 
+// ✅ Button-Look mit Link-Typen (NEU)
+export const ButtonLinkTypes: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <Anchor 
+        href="/" 
+        buttonVariant="primary"
+        linkType="intern" 
+        label="Interner Button" 
+      />
+      <Anchor 
+        href="https://example.com" 
+        buttonVariant="secondary"
+        linkType="extern" 
+        label="Externer Button" 
+        icon={<ExternalLink />}
+        target="_blank"
+      />
+      <Anchor 
+        href="mailto:test@example.com" 
+        buttonVariant="outline"
+        linkType="mail" 
+        label="E-Mail Button" 
+      />
+    </div>
+  ),
+};
+
 // ✅ Automatische Link-Erkennung
 export const AutoDetection: Story = {
   render: () => (
@@ -160,11 +246,8 @@ export const ContentTypes: Story = {
       <Anchor href="/" label="Label wird ignoriert">
         Children haben Priorität
       </Anchor>
-      <Anchor href="/" label="Mit komplexen Children">
-        <div className="flex items-center gap-2">
-          <span>🔗</span>
-          <span>Komplexer Inhalt</span>
-        </div>
+      <Anchor href="/" buttonVariant="primary" label="Button mit Children">
+        <span>Custom Content</span>
       </Anchor>
     </div>
   ),
@@ -181,6 +264,12 @@ export const Accessibility: Story = {
       />
       <Anchor 
         href="/" 
+        buttonVariant="primary"
+        label="Button mit Aria-Label" 
+        ariaLabel="Barrierefreier Button" 
+      />
+      <Anchor 
+        href="/" 
         label="Mit Title" 
         title="Tooltip Information" 
       />
@@ -188,11 +277,6 @@ export const Accessibility: Story = {
         href="/" 
         label="Analytics Tracking" 
         analyticsId="nav-main-link" 
-      />
-      <Anchor 
-        href="/coming-soon" 
-        label="Disabled Link" 
-        aria-disabled="true"
       />
     </div>
   ),
@@ -204,11 +288,13 @@ export const DownloadLinks: Story = {
     <div className="flex flex-col gap-4">
       <Anchor 
         href="/file.pdf" 
+        buttonVariant="primary"
         label="Download PDF" 
         download 
       />
       <Anchor 
         href="/document.docx" 
+        buttonVariant="outline"
         label="Download mit Dateinamen" 
         download="mein-dokument.docx"
       />
@@ -222,11 +308,13 @@ export const TargetOptions: Story = {
     <div className="flex flex-col gap-4">
       <Anchor 
         href="https://example.com" 
+        buttonVariant="primary"
         label="_blank Target" 
         target="_blank" 
       />
       <Anchor 
         href="/" 
+        buttonVariant="secondary"
         label="_self Target" 
         target="_self" 
       />
@@ -244,20 +332,27 @@ export const CombinedExamples: Story = {
     <div className="flex flex-col gap-4">
       <Anchor 
         href="https://example.com" 
-        variant="primary" 
-        underline="hover" 
+        buttonVariant="primary"
+        buttonSize="large"
         icon={<ExternalLink />} 
         iconPosition="right" 
-        label="Kombinierter Link" 
+        label="Kombinierter Button" 
         target="_blank"
         rel="noopener noreferrer"
       />
       <Anchor 
         href="mailto:team@example.com" 
-        variant="secondary" 
+        buttonVariant="outline"
         label="Team Kontakt" 
         icon="📧"
         iconPosition="left"
+      />
+      <Anchor 
+        href="/premium" 
+        buttonVariant="glass"
+        buttonSize="large"
+        label="Premium Features" 
+        icon="✨"
       />
     </div>
   ),
@@ -279,38 +374,55 @@ export const Logo: Story = {
   },
 };
 
+// ✅ Image Button (NEU)
+export const ImageButton: Story = {
+  args: {
+    href: "/",
+    buttonVariant: "ghost",
+    children: (
+      <Image
+        src="/images/quickstatus-logo-vertical.png"
+        height={30}
+        width={150}
+        alt="QuickStatus Logo"
+      />
+    ),
+  },
+};
+
 // ✅ OnClick Handler
 export const WithClickHandler: Story = {
   args: {
     href: "#",
     label: "Click Me",
-    variant: "primary",
+    buttonVariant: "primary",
     onClick: (e) => {
       e.preventDefault();
-      alert("Link wurde geklickt!");
+      alert("Button-Link wurde geklickt!");
     },
   },
 };
 
-// ✅ Komplexes Beispiel
-export const ComplexExample: Story = {
+// ✅ Komplexes Beispiel mit Buttons (NEU)
+export const ComplexButtonExample: Story = {
   render: () => (
     <div className="p-6 bg-gray-100 rounded-lg">
-      <h2 className="text-lg font-bold mb-4">Navigation</h2>
-      <nav className="flex flex-col gap-2">
-        <Anchor href="/" label="Home" variant="primary" />
-        <Anchor href="/about" label="Über uns" />
-        <Anchor href="/contact" label="Kontakt" />
+      <h2 className="text-lg font-bold mb-4">Button Navigation</h2>
+      <nav className="flex flex-col gap-3">
+        <Anchor href="/" buttonVariant="primary" label="Home" />
+        <Anchor href="/about" buttonVariant="outline" label="Über uns" />
+        <Anchor href="/contact" buttonVariant="outline" label="Kontakt" />
         <Anchor 
           href="https://github.com/your-repo" 
+          buttonVariant="secondary"
           label="GitHub" 
-          linkType="extern"
           icon={<ExternalLink />}
           iconPosition="right"
           target="_blank"
         />
         <Anchor 
           href="mailto:support@example.com" 
+          buttonVariant="ghost"
           label="Support" 
           icon="📧"
         />
@@ -319,25 +431,54 @@ export const ComplexExample: Story = {
   ),
 };
 
-// ✅ Stress Test
-export const StressTest: Story = {
+// ✅ Stress Test mit Button (NEU)
+export const StressTestButton: Story = {
   args: {
     href: "https://example.com",
     linkType: "extern",
-    variant: "warning",
-    underline: "always",
+    buttonVariant: "primary",
+    buttonSize: "large",
     icon: <ExternalLink />,
     iconPosition: "right",
-    label: "Komplexer Link mit vielen Props",
+    label: "Komplexer Button-Link",
     title: "Tooltip Information",
     ariaLabel: "Barrierefreie Beschreibung",
-    analyticsId: "stress-test-link",
+    analyticsId: "stress-test-button-link",
     target: "_blank",
     rel: "noopener noreferrer",
     className: "custom-class",
     onClick: (e) => {
       e.preventDefault();
-      console.log("Stress Test geklickt");
+      console.log("Stress Test Button geklickt");
     },
   },
+};
+
+// ✅ Vergleich: Normaler Link vs Button (NEU)
+export const Comparison: Story = {
+  render: () => (
+    <div className="flex flex-col gap-6 p-6 bg-white rounded-lg border">
+      <h3 className="text-lg font-semibold">Vergleich: Link vs Button-Look</h3>
+      
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-4">
+          <Anchor href="/" variant="primary" label="Normaler Link" />
+          <span className="text-gray-500">→</span>
+          <Anchor href="/" buttonVariant="primary" label="Button-Look" />
+        </div>
+        
+        <div className="flex items-center gap-4">
+          <Anchor href="/" variant="secondary" label="Secondary Link" />
+          <span className="text-gray-500">→</span>
+          <Anchor href="/" buttonVariant="secondary" label="Secondary Button" />
+        </div>
+        
+        <div className="flex items-center gap-4">
+          <Anchor href="/" underline="hover" label="Text Link" />
+          <span className="text-gray-500">→</span>
+          <Anchor href="/" buttonVariant="outline" label="Outline Button" />
+        </div>
+      </div>
+    </div>
+  ),
 };
