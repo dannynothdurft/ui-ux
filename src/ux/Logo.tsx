@@ -138,9 +138,11 @@ const LogoComponent: FC<LogoProps> = ({
             {iconSrc ? (
               <Image
                 src={iconSrc}
-                alt=""
+                alt={companyName}
                 width={40}
                 height={40}
+          title={title}
+
               />
             ) : (
               <div className="logo__fallback-icon">
