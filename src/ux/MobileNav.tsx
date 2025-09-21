@@ -1,6 +1,6 @@
 "use client"
 import { NAV_ITEMS, NavItem } from '@/config/nav.config';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
 
@@ -8,25 +8,39 @@ const MobileNav: React.FC = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [openSubmenus, setOpenSubmenus] = useState<Set<string>>(new Set());
+  const mobileNavRef = useRef<HTMLDivElement>(null);
 
-  // Schließe das Menü wenn die Route sich ändert
   useEffect(() => {
     setIsOpen(false);
     setOpenSubmenus(new Set());
   }, [pathname]);
 
-  // Verhindere das Scrollen des Body wenn das Menü offen ist
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.body.style.overflow = 'unset';
+      document.removeEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.body.style.overflow = 'unset';
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (mobileNavRef.current && !mobileNavRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+      setOpenSubmenus(new Set());
+    }
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    setOpenSubmenus(new Set());
+  };
 
   const toggleSubmenu = (id: string) => {
     const newOpenSubmenus = new Set(openSubmenus);
@@ -46,6 +60,7 @@ const MobileNav: React.FC = () => {
             <Link 
               href={item.href} 
               className={pathname === item.href ? "mobile-nav__link mobile-nav__link--active" : "mobile-nav__link"}
+              onClick={closeMenu}
             >
               {item.icon && <span className="mobile-nav__icon">{item.icon}</span>}
               {item.label}
@@ -78,7 +93,11 @@ const MobileNav: React.FC = () => {
               <div className={`mobile-nav__dropdown ${openSubmenus.has(item.id) ? 'mobile-nav__dropdown--open' : ''}`}>
                 {item.children.map((child) => (
                   <div key={child.id} className="mobile-nav__dropdown-item">
-                    <Link href={child.href} className="mobile-nav__dropdown-link">
+                    <Link 
+                      href={child.href} 
+                      className="mobile-nav__dropdown-link"
+                      onClick={closeMenu}
+                    >
                       {child.label}
                     </Link>
                   </div>
@@ -117,7 +136,11 @@ const MobileNav: React.FC = () => {
                     <ul className="mobile-nav__mega-menu-list">
                       {section.items.map((sectionItem) => (
                         <li key={sectionItem.id} className="mobile-nav__mega-menu-item">
-                          <Link href={sectionItem.href} className="mobile-nav__mega-menu-link">
+                          <Link 
+                            href={sectionItem.href} 
+                            className="mobile-nav__mega-menu-link"
+                            onClick={closeMenu}
+                          >
                             {sectionItem.label}
                           </Link>
                         </li>
@@ -148,13 +171,20 @@ const MobileNav: React.FC = () => {
         <span className="mobile-nav__toggle-line"></span>
       </button>
 
-      <div className={`mobile-nav__overlay ${isOpen ? 'mobile-nav__overlay--visible' : ''}`} onClick={() => setIsOpen(false)}></div>
+      <div 
+        className={`mobile-nav__overlay ${isOpen ? 'mobile-nav__overlay--visible' : ''}`} 
+        onClick={closeMenu}
+      ></div>
 
-      <nav className={`mobile-nav ${isOpen ? 'mobile-nav--open' : ''}`} aria-label="Mobile Navigation">
+      <nav 
+        ref={mobileNavRef}
+        className={`mobile-nav ${isOpen ? 'mobile-nav--open' : ''}`} 
+        aria-label="Mobile Navigation"
+      >
         <div className="mobile-nav__header">
           <button 
             className="mobile-nav__close" 
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
             aria-label="Menü schließen"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { usePathname } from "next/navigation";
 
 const DesktopNav: React.FC = () => {
-    const pathname = usePathname();
-
+  const pathname = usePathname();
+  
   const renderNavItem = (item: NavItem) => {
     switch (item.type) {
       case 'link':
