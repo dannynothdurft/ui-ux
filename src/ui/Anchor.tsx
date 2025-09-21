@@ -73,8 +73,7 @@ const AnchorComponent: FC<AnchorProps> = ({
 
   // ✅ CSS-Klassen mit Button-Look
   const combinedClassName = [
-    "anchor",
-    buttonVariant ? `button__${buttonVariant}` : `anchor__${variant}`,
+    buttonVariant ? `button button__${buttonVariant}` : `anchor anchor__${variant}`,
     buttonSize && `button__${buttonSize}`,
     !buttonVariant && `anchor__underline-${underline}`,
     className,

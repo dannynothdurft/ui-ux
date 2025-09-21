@@ -3,43 +3,6 @@ import Button from '@/ui/Button';
 import { ExternalLink } from '@/lib/svg';
 
 export default function Home() {
-  return (<>
-    <p>  <Anchor 
-        href="/" 
-        label="Left Icon" 
-        icon={<ExternalLink />} 
-        iconPosition="left" 
-      />Lorem ipsum dolor  <Anchor 
-        href="/" 
-        label="Right Icon" 
-        icon={<ExternalLink />} 
-        iconPosition="right" 
-      /> sit amet <Anchor href="#" variant='primary'/> consectetur adipisicing elit. Nemo magnam facilis <Anchor href="#" variant='secondary'/> amet consectetur. Voluptatum inventore eveniet reprehenderit repudiandae quasi magnam quod dolore, cupiditate hic ad suscipit sapiente, molestiae autem ipsam?</p>
-   <div>
-      <Anchor 
-        href="/" 
-        label="Left Icon" 
-        icon={<ExternalLink />}
-        iconPosition="left" 
-      />
-      <Anchor 
-        href="/" 
-        label="Right Icon" 
-        icon={<ExternalLink />} 
-        iconPosition="right" 
-      />
-      <Anchor 
-        href="/" 
-        icon={<ExternalLink />}
-        iconPosition="left"
-      >
-        <span className="anchor__icon--right">🔗</span>
-      </Anchor>
-
-      <Anchor href="/hdi" >
-         <Button child={"Link Button"} size='small'/>
-      </Anchor>
-    </div>
-  </>
+  return (<div className="flex flex-col gap-4"> <Anchor href="/" buttonVariant="primary" label="Primary Button" />  <Anchor href="/" buttonVariant="primary" buttonSize="medium" label="Medium" /> <Anchor href="/" buttonVariant="secondary" label="Secondary Button" /> <Anchor href="/" buttonVariant="outline" label="Outline Button" /> <Anchor href="/" buttonVariant="ghost" label="Ghost Button" /> <Anchor href="/" buttonVariant="success" label="Success Button" /> <Anchor href="/" buttonVariant="warning" label="Warning Button" /> <Anchor href="/" buttonVariant="error" label="Error Button" /> <Anchor href="/" buttonVariant="glass" label="Glass Button" /> </div>
   )
 }
