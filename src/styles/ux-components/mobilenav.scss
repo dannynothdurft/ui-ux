@@ -1,22 +1,6 @@
-// Variablen (angenommene Struktur - passe diese an deine tatsächlichen Variablen an)
-$color-primary: #0066cc;
-$color-background: #ffffff;
-$color-text: #333333;
-$color-text-secondary: #666666;
-$color-border: #eaeaea;
-$color-border-light: #f0f0f0;
-$color-hover: #f9f9f9;
-$color-active: #f0f7ff;
-$color-overlay: rgba(0, 0, 0, 0.5);
-$shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-
-$breakpoint-mobile: 768px;
-$transition-duration: 0.3s;
-$transition-easing: ease;
-
 .mobile-nav {
   &__toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -28,8 +12,8 @@ $transition-easing: ease;
     padding: 0;
     z-index: 1001;
 
-    @media (max-width: $breakpoint-mobile) {
-      display: flex;
+    @media #{ $mqLG } {
+      display: none;
     }
 
     &-line {
@@ -37,7 +21,7 @@ $transition-easing: ease;
       height: 2px;
       background-color: currentColor;
       margin: 2px 0;
-      transition: all $transition-duration $transition-easing;
+      transition: all $transition-duration-slow $transition-timing-ease;
     }
 
     &--active {
@@ -63,10 +47,10 @@ $transition-easing: ease;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $color-overlay;
+    background-color: $overlay-sm;
     opacity: 0;
     visibility: hidden;
-    transition: all $transition-duration $transition-easing;
+    transition: all $transition-duration-slow $transition-timing-ease;
     z-index: 998;
 
     &--visible {
@@ -82,9 +66,9 @@ $transition-easing: ease;
     width: 85%;
     max-width: 400px;
     height: 100%;
-    background-color: $color-background;
-    box-shadow: $shadow;
-    transition: right $transition-duration $transition-easing;
+    background-color: $color-background-primary;
+    box-shadow: $shadow-md;
+    transition: right $transition-duration-slow $transition-timing-ease;
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -99,14 +83,14 @@ $transition-easing: ease;
     display: flex;
     justify-content: flex-end;
     padding: 16px;
-    border-bottom: 1px solid $color-border;
+    border-bottom: 1px solid $color-border-primary;
   }
 
   &__close {
     background: none;
     border: none;
     cursor: pointer;
-    color: $color-text;
+    color: $color-text-primary;
   }
 
   &__list {
@@ -116,7 +100,7 @@ $transition-easing: ease;
   }
 
   &__item {
-    border-bottom: 1px solid $color-border-light;
+    border-bottom: 1px solid $color-border-secondary;
   }
 
   &__link {
@@ -125,7 +109,7 @@ $transition-easing: ease;
     width: 100%;
     padding: 16px 20px;
     text-decoration: none;
-    color: $color-text;
+    color: $color-text-primary;
     background: none;
     border: none;
     text-align: left;
@@ -135,7 +119,7 @@ $transition-easing: ease;
 
     &--active {
       color: $color-primary;
-      background-color: $color-active;
+      background-color: $color-background-active;
     }
 
     &--has-children {
@@ -143,7 +127,7 @@ $transition-easing: ease;
     }
 
     &:hover {
-      background-color: $color-hover;
+      background-color: $color-background-hover;
     }
   }
 
@@ -154,7 +138,7 @@ $transition-easing: ease;
   }
 
   &__chevron {
-    transition: transform $transition-duration $transition-easing;
+    transition: transform $transition-duration-slow $transition-timing-ease;
 
     &--rotated {
       transform: rotate(180deg);
@@ -164,14 +148,14 @@ $transition-easing: ease;
   &__dropdown {
     max-height: 0;
     overflow: hidden;
-    transition: max-height $transition-duration $transition-easing;
+    transition: max-height $transition-duration-slow $transition-timing-ease;
 
     &--open {
       max-height: 500px;
     }
 
     &-item {
-      border-top: 1px solid $color-border-light;
+      border-top: 1px solid $color-border-secondary;
     }
 
     &-link {
@@ -183,8 +167,8 @@ $transition-easing: ease;
       transition: background-color 0.2s, color 0.2s;
 
       &:hover {
-        background-color: $color-hover;
-        color: $color-text;
+        background-color: $color-background-hover;
+        color: $color-text-primary;
       }
     }
   }
@@ -192,7 +176,7 @@ $transition-easing: ease;
   &__mega-menu {
     max-height: 0;
     overflow: hidden;
-    transition: max-height $transition-duration $transition-easing;
+    transition: max-height $transition-duration-slow $transition-timing-ease;
 
     &--open {
       max-height: 1000px;
@@ -200,14 +184,14 @@ $transition-easing: ease;
 
     &-section {
       padding: 16px 20px 16px 52px;
-      border-top: 1px solid $color-border-light;
+      border-top: 1px solid $color-border-secondary;
     }
 
     &-title {
       margin: 0 0 12px 0;
       font-size: 15px;
       font-weight: 600;
-      color: $color-text;
+      color: $color-text-primary;
     }
 
     &-list {
@@ -228,7 +212,7 @@ $transition-easing: ease;
       transition: color 0.2s;
 
       &:hover {
-        color: $color-text;
+        color: $color-text-primary;
       }
     }
   }

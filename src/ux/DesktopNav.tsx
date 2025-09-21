@@ -22,10 +22,10 @@ const DesktopNav: React.FC = () => {
       case 'dropdown':
         return (
           <li key={item.id} className="desktop-nav__item">
-            <Link href={item.href} className={pathname === item.href ? "desktop-nav__link desktop-nav__link--active" : "desktop-nav__link"}>
+            <span className={pathname === item.href ? "desktop-nav__link desktop-nav__link--active" : "desktop-nav__link"}>
               {item.icon && <span className="desktop-nav__icon">{item.icon}</span>}
               {item.label}
-            </Link>
+            </span>
             {item.children && (
               <div className="desktop-nav__dropdown">
                 {item.children.map((child) => (
@@ -43,10 +43,10 @@ const DesktopNav: React.FC = () => {
       case 'mega-menu':
         return (
           <li key={item.id} className="desktop-nav__item">
-            <Link href={item.href} className={pathname === item.href ? "desktop-nav__link desktop-nav__link--active" : "desktop-nav__link"}>
+            <span className={pathname === item.href ? "desktop-nav__link desktop-nav__link--active" : "desktop-nav__link"}>
               {item.icon && <span className="desktop-nav__icon">{item.icon}</span>}
               {item.label}
-            </Link>
+            </span>
             {item.featured && (
               <div className="desktop-nav__mega-menu">
                 <div className="desktop-nav__mega-menu-grid">
