@@ -6,6 +6,7 @@
   &__list {
     display: flex;
     list-style: none;
+    flex-direction: row;
     margin: 0;
     padding: 0;
     gap: $spacing-xxs;
