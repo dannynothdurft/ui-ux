@@ -1,0 +1,471 @@
+// Basis-Section (Mobile First)
+.section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  
+  &--full-width {
+    .section__container {
+      max-width: 100%;
+    }
+  }
+  
+  // Padding Varianten (Mobile First)
+  &--padding {
+    &-none {
+      padding: 0;
+    }
+    
+    &-xs {
+      padding: $spacing-sm 0;
+    }
+    
+    &-small {
+      padding: $spacing-lg 0;
+    }
+    
+    &-medium {
+      padding: $spacing-xxl 0;
+    }
+    
+    &-large {
+      padding: $spacing-5xl 0;
+    }
+    
+    &-xl {
+      padding: $spacing-7xl 0;
+    }
+  }
+  
+  // Responsive Padding für größere Screens
+  @media #{$mqLG} {
+    &--padding {
+      &-xs {
+        padding: $spacing-sm * 1.5 0;
+      }
+      
+      &-small {
+        padding: $spacing-lg * 1.5 0;
+      }
+      
+      &-medium {
+        padding: $spacing-xxl * 1.5 0;
+      }
+      
+      &-large {
+        padding: $spacing-5xl * 1.5 0;
+      }
+      
+      &-xl {
+        padding: $spacing-7xl * 1.5 0;
+      }
+    }
+  }
+  
+  @media #{$mqXL} {
+    &--padding {
+      &-small {
+        padding: $spacing-lg * 2 0;
+      }
+      
+      &-medium {
+        padding: $spacing-xxl * 2 0;
+      }
+      
+      &-large {
+        padding: $spacing-5xl * 2 0;
+      }
+      
+      &-xl {
+        padding: $spacing-7xl * 2 0;
+      }
+    }
+  }
+}
+
+.section__container {
+  width: 100%;
+  max-width: $xxl;
+  margin: 0 auto;
+  padding: 0 1rem;
+  
+  @media #{$mqLG} {
+    padding: 0 2rem;
+  }
+}
+
+// Section Content (Mobile First)
+.section-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column; // Standard: immer column auf Mobile
+  
+  // Flex Layout Varianten - Mobile zuerst column, dann responsive
+  &--flex-row {
+    @media #{$mqLG} {
+      flex-direction: row;
+    }
+  }
+  
+  &--flex-column {
+    flex-direction: column;
+  }
+  
+  &--flex-wrap {
+    flex-wrap: wrap;
+  }
+  
+  &--flex-nowrap {
+    flex-wrap: nowrap;
+  }
+  
+  // Grid Layout Varianten (Mobile First)
+  &--grid-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  &--grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xxl;
+    
+    @media #{$mqMD} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &--grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xxl;
+    
+    @media #{$mqMD} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media #{$mqLG} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &--grid-4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xxl;
+    
+    @media #{$mqMD} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media #{$mqLG} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media #{$mqXL} {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  &--grid-5 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xxl;
+    
+    @media #{$mqMD} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media #{$mqLG} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media #{$mqXL} {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  
+  &--grid-6 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xxl;
+    
+    @media #{$mqMD} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media #{$mqLG} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media #{$mqXL} {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+  
+  // Gap Varianten
+  &--gap {
+    &-none {
+      gap: 0;
+    }
+    
+    &-xs {
+      gap: $spacing-sm;
+    }
+    
+    &-sm {
+      gap: $spacing-lg;
+    }
+    
+    &-md {
+      gap: $spacing-xxl;
+    }
+    
+    &-lg {
+      gap: $spacing-5xl;
+    }
+    
+    &-xl {
+      gap: $spacing-7xl;
+    }
+  }
+  
+  // Vertikale Ausrichtung
+  &--valign {
+    &-top {
+      align-items: flex-start;
+    }
+    
+    &-center {
+      align-items: center;
+    }
+    
+    &-bottom {
+      align-items: flex-end;
+    }
+    
+    &-stretch {
+      align-items: stretch;
+    }
+  }
+  
+  // Horizontale Ausrichtung
+  &--halign {
+    &-left {
+      justify-content: flex-start;
+    }
+    
+    &-center {
+      justify-content: center;
+    }
+    
+    &-right {
+      justify-content: flex-end;
+    }
+    
+    &-between {
+      justify-content: space-between;
+    }
+    
+    &-around {
+      justify-content: space-around;
+    }
+    
+    &-evenly {
+      justify-content: space-evenly;
+    }
+  }
+  
+  // Spezielle Layouts mit Responsive-Verhalten
+  &--image-left {
+    // Mobile: Bild über Text
+    flex-direction: column;
+    
+    @media #{$mqLG} {
+      flex-direction: row;
+      
+      .section-image {
+        margin-right: 2rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &--image-right {
+    // Mobile: Bild über Text
+    flex-direction: column;
+    
+    @media #{$mqLG} {
+      flex-direction: row-reverse;
+      
+      .section-image {
+        margin-left: 2rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &--centered {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+// Section Item (für Grid/Flex Items)
+.section-item {
+  // Flex Items sind standardmäßig full width auf Mobile
+  width: 100%;
+  
+  @media #{$mqLG} {
+    width: auto;
+  }
+  
+  &--flex {
+    &-1 { 
+      flex: 1; 
+      @media (max-width: $lg) {
+        width: 100%;
+      }
+    }
+    &-2 { 
+      flex: 2; 
+      @media (max-width: $lg) {
+        width: 100%;
+      }
+    }
+    &-3 { 
+      flex: 3; 
+      @media (max-width: $lg) {
+        width: 100%;
+      }
+    }
+    &-4 { 
+      flex: 4; 
+      @media (max-width: $lg) {
+        width: 100%;
+      }
+    }
+    &-5 { 
+      flex: 5; 
+      @media (max-width: $lg) {
+        width: 100%;
+      }
+    }
+    &-6 { 
+      flex: 6; 
+      @media (max-width: $lg) {
+        width: 100%;
+      }
+    }
+  }
+  
+  &--align {
+    &-start { align-self: flex-start; }
+    &-center { align-self: center; }
+    &-end { align-self: flex-end; }
+    &-stretch { align-self: stretch; }
+  }
+}
+
+// Section Image
+.section-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $spacing-xxl; // Standard Abstand unten auf Mobile
+  
+  @media #{$mqLG} {
+    margin-bottom: 0;
+  }
+  
+  &--full-width {
+    width: 100%;
+    
+    .section-image__img {
+      width: 100%;
+    }
+  }
+  
+  &--contain {
+    .section-image__img {
+      object-fit: contain;
+    }
+  }
+  
+  &--cover {
+    .section-image__img {
+      object-fit: cover;
+    }
+  }
+  
+  &__img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    
+    &--rounded {
+      border-radius: 50%;
+    }
+    
+    &--square {
+      aspect-ratio: 1/1;
+    }
+    
+    &--portrait {
+      aspect-ratio: 2/3;
+    }
+    
+    &--landscape {
+      aspect-ratio: 16/9;
+    }
+  }
+}
+
+// Section Text
+.section-text {
+  display: flex;
+  flex-direction: column;
+  
+  &--center {
+    text-align: center;
+  }
+  
+  &--left {
+    text-align: left;
+  }
+  
+  &--right {
+    text-align: right;
+  }
+}
+
+// Mobile Optimization
+@media (max-width: $lg) {
+  .section-content {
+    // Sicherstellen, dass Flex-Items auf Mobile untereinander stehen
+    &--flex-row,
+    &--flex-wrap,
+    &--flex-nowrap {
+      flex-direction: column;
+      
+      .section-item {
+        width: 100%;
+        margin-bottom: $spacing-xxl;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  
+  // Bessere Abstände auf Mobile
+  .section-content--gap {
+    &-xs { gap: $spacing-sm * 0.5; }
+    &-sm { gap: $spacing-lg * 0.5; }
+    &-md { gap: $spacing-xxl * 0.5; }
+    &-lg { gap: $spacing-5xl * 0.5; }
+    &-xl { gap: $spacing-7xl * 0.5; }
+  }
+}

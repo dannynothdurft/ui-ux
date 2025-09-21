@@ -17,3 +17,44 @@
 @import './ux-components/logo.scss';
 @import './ux-components/desktopnav.scss';
 @import './ux-components/mobilenav.scss';
+@import './ux-components/section.scss';
+
+
+// Utility-Klassen
+.text {
+  &-center { text-align: center; }
+  &-left { text-align: left; }
+  &-right { text-align: right; }
+  &-justify { text-align: justify; }
+}
+
+.mb {
+  &-none { margin-bottom: 0; }
+  &-xs { margin-bottom: $spacing-sm; }
+  &-sm { margin-bottom: $spacing-lg; }
+  &-md { margin-bottom: $spacing-xxl; }
+  &-lg { margin-bottom: $spacing-5xl; }
+  &-xl { margin-bottom: $spacing-7xl; }
+}
+
+.mt {
+  &-none { margin-top: 0; }
+  &-xs { margin-top: $spacing-sm; }
+  &-sm { margin-top: $spacing-lg; }
+  &-md { margin-top: $spacing-xxl; }
+  &-lg { margin-top: $spacing-5xl; }
+  &-xl { margin-top: $spacing-7xl; }
+}
+
+// Responsive Hilfsklassen
+.hide-mobile {
+  @media (max-width: $lg) {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @media #{$mqLG} {
+    display: none !important;
+  }
+}
