@@ -12,6 +12,7 @@
 // UI TAGS
 @import './ui-tags/anchor.scss';
 @import './ui-tags/button.scss';
+@import './ui-tags/input.scss';
 
 // UX Components
 @import './ux-components/logo.scss';
@@ -19,31 +20,94 @@
 @import './ux-components/mobilenav.scss';
 @import './ux-components/section.scss';
 
+h1 {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 2.5rem);
+}
+
+h2 {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw, 2.125rem);
+}
+
+h3 {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+}
+
+h4 {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+p {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
 
 // Utility-Klassen
 .text {
-  &-center { text-align: center; }
-  &-left { text-align: left; }
-  &-right { text-align: right; }
-  &-justify { text-align: justify; }
+  &-center {
+    text-align: center;
+  }
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-justify {
+    text-align: justify;
+  }
 }
 
 .mb {
-  &-none { margin-bottom: 0; }
-  &-xs { margin-bottom: $spacing-sm; }
-  &-sm { margin-bottom: $spacing-lg; }
-  &-md { margin-bottom: $spacing-xxl; }
-  &-lg { margin-bottom: $spacing-5xl; }
-  &-xl { margin-bottom: $spacing-7xl; }
+  &-none {
+    margin-bottom: 0;
+  }
+  &-xs {
+    margin-bottom: $spacing-sm;
+  }
+  &-sm {
+    margin-bottom: $spacing-lg;
+  }
+  &-md {
+    margin-bottom: $spacing-xxl;
+  }
+  &-lg {
+    margin-bottom: $spacing-5xl;
+  }
+  &-xl {
+    margin-bottom: $spacing-7xl;
+  }
 }
 
 .mt {
-  &-none { margin-top: 0; }
-  &-xs { margin-top: $spacing-sm; }
-  &-sm { margin-top: $spacing-lg; }
-  &-md { margin-top: $spacing-xxl; }
-  &-lg { margin-top: $spacing-5xl; }
-  &-xl { margin-top: $spacing-7xl; }
+  &-none {
+    margin-top: 0;
+  }
+  &-xs {
+    margin-top: $spacing-sm;
+  }
+  &-sm {
+    margin-top: $spacing-lg;
+  }
+  &-md {
+    margin-top: $spacing-xxl;
+  }
+  &-lg {
+    margin-top: $spacing-5xl;
+  }
+  &-xl {
+    margin-top: $spacing-7xl;
+  }
 }
 
 // Responsive Hilfsklassen
@@ -56,5 +120,403 @@
 .hide-desktop {
   @media #{$mqLG} {
     display: none !important;
+  }
+}
+
+// Display-Klassen
+.display {
+  &-block {
+    display: block;
+  }
+  &-inline {
+    display: inline;
+  }
+  &-inline-block {
+    display: inline-block;
+  }
+  &-flex {
+    display: flex;
+  }
+  &-grid {
+    display: grid;
+  }
+  &-none {
+    display: none;
+  }
+}
+
+// Flexbox Utilities
+.flex {
+  &-row {
+    flex-direction: row;
+  }
+  &-column {
+    flex-direction: column;
+  }
+  &-wrap {
+    flex-wrap: wrap;
+  }
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &-justify {
+    &-start {
+      justify-content: flex-start;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+    &-center {
+      justify-content: center;
+    }
+    &-between {
+      justify-content: space-between;
+    }
+    &-around {
+      justify-content: space-around;
+    }
+    &-evenly {
+      justify-content: space-evenly;
+    }
+  }
+
+  &-align {
+    &-start {
+      align-items: flex-start;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+    &-center {
+      align-items: center;
+    }
+    &-stretch {
+      align-items: stretch;
+    }
+    &-baseline {
+      align-items: baseline;
+    }
+  }
+
+  &-grow {
+    flex-grow: 1;
+  }
+  &-shrink {
+    flex-shrink: 1;
+  }
+  &-none {
+    flex: none;
+  }
+}
+
+// Grid Utilities
+.grid {
+  &-cols {
+    &-1 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    &-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &-gap {
+    &-sm {
+      gap: $spacing-sm;
+    }
+    &-md {
+      gap: $spacing-lg;
+    }
+    &-lg {
+      gap: $spacing-xxl;
+    }
+  }
+}
+
+// Position Utilities
+.position {
+  &-relative {
+    position: relative;
+  }
+  &-absolute {
+    position: absolute;
+  }
+  &-fixed {
+    position: fixed;
+  }
+  &-sticky {
+    position: sticky;
+  }
+  &-static {
+    position: static;
+  }
+}
+
+// Padding Utilities (analog zu deinen margin classes)
+.p {
+  &-none {
+    padding: 0;
+  }
+  &-xs {
+    padding: $spacing-sm;
+  }
+  &-sm {
+    padding: $spacing-lg;
+  }
+  &-md {
+    padding: $spacing-xxl;
+  }
+  &-lg {
+    padding: $spacing-5xl;
+  }
+  &-xl {
+    padding: $spacing-7xl;
+  }
+}
+
+.px {
+  &-none {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &-xs {
+    padding-left: $spacing-sm;
+    padding-right: $spacing-sm;
+  }
+  &-sm {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+  &-md {
+    padding-left: $spacing-xxl;
+    padding-right: $spacing-xxl;
+  }
+  &-lg {
+    padding-left: $spacing-5xl;
+    padding-right: $spacing-5xl;
+  }
+  &-xl {
+    padding-left: $spacing-7xl;
+    padding-right: $spacing-7xl;
+  }
+}
+
+.py {
+  &-none {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  &-xs {
+    padding-top: $spacing-sm;
+    padding-bottom: $spacing-sm;
+  }
+  &-sm {
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
+  }
+  &-md {
+    padding-top: $spacing-xxl;
+    padding-bottom: $spacing-xxl;
+  }
+  &-lg {
+    padding-top: $spacing-5xl;
+    padding-bottom: $spacing-5xl;
+  }
+  &-xl {
+    padding-top: $spacing-7xl;
+    padding-bottom: $spacing-7xl;
+  }
+}
+
+// Width & Height Utilities
+.w {
+  &-full {
+    width: 100%;
+  }
+  &-auto {
+    width: auto;
+  }
+  &-50 {
+    width: 50%;
+  }
+  &-33 {
+    width: 33.333%;
+  }
+  &-25 {
+    width: 25%;
+  }
+  &-max-content {
+    width: max-content;
+  }
+  &-min-content {
+    width: min-content;
+  }
+}
+
+.h {
+  &-full {
+    height: 100%;
+  }
+  &-auto {
+    height: auto;
+  }
+  &-screen {
+    height: 100vh;
+  }
+  &-max-content {
+    height: max-content;
+  }
+  &-min-content {
+    height: min-content;
+  }
+}
+
+// Overflow Utilities
+.overflow {
+  &-auto {
+    overflow: auto;
+  }
+  &-hidden {
+    overflow: hidden;
+  }
+  &-visible {
+    overflow: visible;
+  }
+  &-scroll {
+    overflow: scroll;
+  }
+
+  &-x-auto {
+    overflow-x: auto;
+  }
+  &-x-hidden {
+    overflow-x: hidden;
+  }
+
+  &-y-auto {
+    overflow-y: auto;
+  }
+  &-y-hidden {
+    overflow-y: hidden;
+  }
+}
+
+// Visibility Utilities
+.visibility {
+  &-visible {
+    visibility: visible;
+  }
+  &-hidden {
+    visibility: hidden;
+  }
+  &-collapse {
+    visibility: collapse;
+  }
+}
+
+// Cursor Utilities
+.cursor {
+  &-pointer {
+    cursor: pointer;
+  }
+  &-default {
+    cursor: default;
+  }
+  &-not-allowed {
+    cursor: not-allowed;
+  }
+  &-wait {
+    cursor: wait;
+  }
+  &-text {
+    cursor: text;
+  }
+  &-move {
+    cursor: move;
+  }
+}
+
+// Z-Index Utilities
+.z {
+  &-auto {
+    z-index: auto;
+  }
+  &-0 {
+    z-index: 0;
+  }
+  &-10 {
+    z-index: 10;
+  }
+  &-20 {
+    z-index: 20;
+  }
+  &-30 {
+    z-index: 30;
+  }
+  &-40 {
+    z-index: 40;
+  }
+  &-50 {
+    z-index: 50;
+  }
+}
+
+// Border Radius Utilities
+.rounded {
+  &-none {
+    border-radius: 0;
+  }
+  &-sm {
+    border-radius: 0.125rem;
+  }
+  &-md {
+    border-radius: 0.375rem;
+  }
+  &-lg {
+    border-radius: 0.5rem;
+  }
+  &-xl {
+    border-radius: 0.75rem;
+  }
+  &-full {
+    border-radius: 9999px;
+  }
+}
+
+// Responsive Varianten für alle Utilities
+// @each $breakpoint, $value in $breakpoints {
+//   @media (min-width: $value) {
+//     .#{$breakpoint}\: {
+//       // Hier könntest du responsive Varianten aller Klassen hinzufügen
+//       // z.B. .lg\:flex, .md\:text-center, etc.
+//     }
+//   }
+// }
+
+// Print Utilities
+@media print {
+  .print {
+    &-hide {
+      display: none !important;
+    }
+    &-show {
+      display: block !important;
+    }
+    &-break-before {
+      page-break-before: always;
+    }
+    &-break-after {
+      page-break-after: always;
+    }
+    &-break-avoid {
+      page-break-inside: avoid;
+    }
   }
 }

@@ -1,0 +1,265 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  &--full-width {
+    width: 100%;
+  }
+}
+
+.input-label {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xxs;
+
+  &--required::after {
+    content: '*';
+    color: $color-error;
+    margin-left: $spacing-xxs;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: $color-background-primary;
+  border: 2px solid $color-border-primary;
+  border-radius: $border-radius-md;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Varianten
+  &--default {
+    background: $color-background-primary;
+    
+    &:focus-within {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+    }
+  }
+
+  &--filled {
+    background: $color-background-alt;
+    border-color: transparent;
+    
+    &:focus-within {
+      background: $color-background-primary;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    border-color: $color-border-primary;
+    
+    &:focus-within {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    border-color: transparent;
+    
+    &:focus-within {
+      background: $color-background-alt;
+      border-color: $color-border-primary;
+    }
+  }
+
+  // Größen
+  &--sm {
+    padding: $spacing-xs $spacing-sm;
+    
+    .input {
+      font-size: $font-size-sm;
+      padding: $spacing-xs 0;
+    }
+  }
+
+  &--md {
+    padding: $spacing-sm $spacing-md;
+    
+    .input {
+      font-size: $font-size-base;
+      padding: $spacing-xs 0;
+    }
+  }
+
+  &--lg {
+    padding: $spacing-md $spacing-lg;
+    
+    .input {
+      font-size: $font-size-lg;
+      padding: $spacing-sm 0;
+    }
+  }
+
+  // Border Radius
+  &--rounded-none { border-radius: 0; }
+  &--rounded-sm { border-radius: $border-radius-sm; }
+  &--rounded-md { border-radius: $border-radius-md; }
+  &--rounded-lg { border-radius: $border-radius-lg; }
+  &--rounded-full { border-radius: $border-radius-full; }
+
+  // States
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    
+    .input {
+      cursor: not-allowed;
+    }
+  }
+
+  &--readonly {
+    background: $color-background-alt;
+    
+    .input {
+      cursor: default;
+    }
+  }
+
+  &--error {
+    border-color: $color-error;
+    
+    &:focus-within {
+      border-color: $color-error;
+      box-shadow: 0 0 0 3px rgba($color-error, 0.1);
+    }
+  }
+
+  // Icons
+  &--has-prefix {
+    .input {
+      padding-left: $spacing-sm;
+    }
+  }
+
+  &--has-suffix {
+    .input {
+      padding-right: $spacing-sm;
+    }
+  }
+}
+
+.input {
+  flex: 1;
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-weight: $font-weight-normal;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+
+  &::placeholder {
+    color: $color-text-tertiary;
+    opacity: 1;
+  }
+
+  &:disabled {
+    color: $color-text-tertiary;
+  }
+
+  &:read-only {
+    color: $color-text-secondary;
+  }
+
+  // Remove default styles
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-tertiary;
+  transition: color 0.3s ease;
+
+  &--prefix {
+    margin-right: $spacing-xs;
+  }
+
+  &--suffix {
+    margin-left: $spacing-xs;
+  }
+
+  .input-wrapper:focus-within & {
+    color: $color-primary;
+  }
+
+  .input-wrapper--error & {
+    color: $color-error;
+  }
+}
+
+.input-helper {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  font-size: $font-size-xs;
+  line-height: $line-height-normal;
+  color: $color-text-secondary;
+
+  &--error {
+    color: $color-error;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// Focus Styles für Accessibility
+.input:focus-visible {
+  outline: none;
+}
+
+// Reduced Motion Support
+@media (prefers-reduced-motion: reduce) {
+  .input-wrapper {
+    transition: none;
+  }
+}
+
+// Dark Mode Support
+[data-theme='dark'] {
+  .input-wrapper {
+    background: $color-background-primary;
+    border-color: $color-border-primary;
+
+    &--filled {
+      background: $color-background-alt;
+    }
+
+    &--ghost:focus-within {
+      background: $color-background-alt;
+    }
+  }
+
+  .input {
+    color: $color-text-inverse;
+
+    &::placeholder {
+      color: $color-text-tertiary;
+    }
+  }
+
+  .input-label {
+    color: $color-text-inverse;
+  }
+
+  .input-helper {
+    color: $color-secondary-dark;
+  }
+}
