@@ -1,47 +1,51 @@
 // Variablen importieren
-@import './variables/breakpoints.scss';
-@import './variables/colors.scss';
-@import './variables/spacing.scss';
-@import './variables/typography.scss';
-@import './variables/effects.scss';
-@import './variables/_variables.scss';
+@import "../fonts/fonts.scss";
+@import "./variables/breakpoints.scss";
+@import "./variables/colors.scss";
+@import "./variables/spacing.scss";
+@import "./variables/typography.scss";
+@import "./variables/effects.scss";
+@import "./variables/_variables.scss";
 
 // Reset importieren
-@import 'reset';
+@import "reset";
 
 // UI TAGS
-@import './ui-tags/anchor.scss';
-@import './ui-tags/button.scss';
-@import './ui-tags/input.scss';
+@import "./ui-tags/anchor.scss";
+@import "./ui-tags/button.scss";
+@import "./ui-tags/input.scss";
 
 // UX Components
-@import './ux-components/logo.scss';
-@import './ux-components/desktopnav.scss';
-@import './ux-components/mobilenav.scss';
-@import './ux-components/section.scss';
+@import "./ux-components/logo.scss";
+@import "./ux-components/desktopnav.scss";
+@import "./ux-components/mobilenav.scss";
+@import "./ux-components/section.scss";
+
+// APP Compoents
+// Pages
 
 h1 {
   font-family: 'Poppins', 'Arial', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: clamp(2.2rem, 5vw, 2.5rem);
 }
 
 h2 {
   font-family: 'Poppins', 'Arial', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: clamp(1.8rem, 4vw, 2.125rem);
 }
 
 h3 {
   font-family: 'Poppins', 'Arial', sans-serif;
-  font-weight: 500;
-  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
 h4 {
   font-family: 'Poppins', 'Arial', sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2vw, 1.25rem);
 }
 
 p {
@@ -108,6 +112,36 @@ p {
   &-xl {
     margin-top: $spacing-7xl;
   }
+}
+
+// Margin Y (vertical)
+.my {
+  &-none { margin-top: 0; margin-bottom: 0; }
+  &-xs   { margin-top: $spacing-xs; margin-bottom: $spacing-xs; }
+  &-sm   { margin-top: $spacing-sm; margin-bottom: $spacing-sm; }
+  &-md   { margin-top: $spacing-md; margin-bottom: $spacing-md; }
+  &-lg   { margin-top: $spacing-lg; margin-bottom: $spacing-lg; }
+  &-xl   { margin-top: $spacing-xl; margin-bottom: $spacing-xl; }
+}
+
+// Margin X (horizontal)
+.mx {
+  &-none { margin-left: 0; margin-right: 0; }
+  &-xs   { margin-left: $spacing-xs; margin-right: $spacing-xs; }
+  &-sm   { margin-left: $spacing-sm; margin-right: $spacing-sm; }
+  &-md   { margin-left: $spacing-md; margin-right: $spacing-md; }
+  &-lg   { margin-left: $spacing-lg; margin-right: $spacing-lg; }
+  &-xl   { margin-left: $spacing-xl; margin-right: $spacing-xl; }
+}
+
+// Margin all sides
+.m {
+  &-none { margin: 0; }
+  &-xs   { margin: $spacing-xs; }
+  &-sm   { margin: $spacing-sm; }
+  &-md   { margin: $spacing-md; }
+  &-lg   { margin: $spacing-lg; }
+  &-xl   { margin: $spacing-xl; }
 }
 
 // Responsive Hilfsklassen
@@ -208,6 +242,15 @@ p {
   &-none {
     flex: none;
   }
+
+  &-gap {
+  &-none { gap: 0; }
+  &-xs   { gap: $spacing-xs; }
+  &-sm   { gap: $spacing-sm; }
+  &-md   { gap: $spacing-md; }
+  &-lg   { gap: $spacing-lg; }
+  &-xl   { gap: $spacing-xl; }
+}
 }
 
 // Grid Utilities
@@ -357,6 +400,9 @@ p {
   }
   &-min-content {
     width: min-content;
+  }
+  &-p60 {
+    width: 60px;
   }
 }
 
