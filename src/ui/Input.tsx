@@ -6,7 +6,7 @@ export interface InputProps {
   type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
   id?: string;
   name: string;
-  value?: string;
+  value?: string | number;
   defaultValue?: string;
   placeholder?: string;
   
