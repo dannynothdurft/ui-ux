@@ -68,7 +68,7 @@ const AnchorComponent: FC<AnchorProps> = ({
     if (href.startsWith("mailto:")) return "mail";
     if (href.startsWith("tel:")) return "tel";
     if (href.startsWith("#") || href.startsWith("/")) return "intern";
-    return "extern";
+    return "intern";
   }, [href, linkType]);
 
   // ✅ CSS-Klassen mit Button-Look
