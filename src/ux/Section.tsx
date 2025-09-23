@@ -4,6 +4,7 @@ import Image from "next/image";
 
 interface SectionProps {
   children?: React.ReactNode;
+  background?: string;
   backgroundColor?: string;
   backgroundImage?: string; // Neu
   backgroundSize?: "cover" | "contain" | "auto"; // Neu
@@ -16,6 +17,7 @@ interface SectionProps {
 
 export const Section: React.FC<SectionProps> = ({
   children,
+  background,
   backgroundColor,
   backgroundImage, // Neu
   backgroundSize = "cover", // Neu
@@ -34,6 +36,7 @@ export const Section: React.FC<SectionProps> = ({
         section--padding-${padding}
       `}
       style={{ 
+        background,
         backgroundColor,
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
         backgroundSize,

@@ -28,7 +28,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   child: ReactNode;
 }
 
-const ButtonComponent: FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   // 🎨 Style-Props
   variant = "primary",
   size = "medium",
@@ -95,4 +95,4 @@ const ButtonComponent: FC<ButtonProps> = ({
 };
 
 
-export default ButtonComponent;
+export default Button;
