@@ -67,125 +67,125 @@
   
   // Varianten - Modern mit Verläufen und Schatten
   &__primary {
-    background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+    background: linear-gradient(135deg, palette($palette-primary, 500), palette($palette-primary, 800));
     color: $color-white;
-    box-shadow: 0 4px 12px color-opacity($color-primary, 0.3);
+    box-shadow: 0 4px 12px color-opacity(palette($palette-primary, 500), 0.3);
     
     &:hover {
-      background: linear-gradient(135deg, $color-primary-dark, $color-primary);
-      box-shadow: 0 6px 16px color-opacity($color-primary, 0.4);
+      background: linear-gradient(135deg, palette($palette-primary, 800), palette($palette-primary, 500));
+      box-shadow: 0 6px 16px color-opacity(palette($palette-primary, 500), 0.4);
       transform: translateY(-2px);
     }
     
     &:active {
       transform: translateY(0);
-      box-shadow: 0 2px 8px color-opacity($color-primary, 0.2);
+      box-shadow: 0 2px 8px color-opacity(palette($palette-primary, 500), 0.2);
     }
     
     &:focus {
-      box-shadow: 0 0 0 4px color-opacity($color-primary, 0.3);
+      box-shadow: 0 0 0 4px color-opacity(palette($palette-primary, 500), 0.3);
     }
   }
   
   &__secondary {
-    background: linear-gradient(135deg, $color-secondary, $color-secondary-dark);
+    background: linear-gradient(135deg, color('primary', 500), color('primary', 800));
     color: $color-white;
-    box-shadow: 0 4px 12px color-opacity($color-secondary, 0.3);
+    box-shadow: 0 4px 12px color-opacity(color('primary', 500), 0.3);
     
     &:hover {
-      background: linear-gradient(135deg, $color-secondary-dark, $color-secondary);
-      box-shadow: 0 6px 16px color-opacity($color-secondary, 0.4);
+      background: linear-gradient(135deg, color('primary', 800), color('primary', 500));
+      box-shadow: 0 6px 16px color-opacity(color('primary', 500), 0.4);
       transform: translateY(-2px);
     }
     
     &:active {
       transform: translateY(0);
-      box-shadow: 0 2px 8px color-opacity($color-secondary, 0.2);
+      box-shadow: 0 2px 8px color-opacity(color('primary', 500), 0.2);
     }
     
     &:focus {
-      box-shadow: 0 0 0 4px color-opacity($color-secondary, 0.3);
+      box-shadow: 0 0 0 4px color-opacity(color('primary', 500), 0.3);
     }
   }
   
   &__outline {
     background: transparent;
-    color: $color-primary;
-    border-color: $color-primary;
-    box-shadow: 0 2px 8px color-opacity($color-primary, 0.1);
+    color: palette($palette-primary, 500);
+    border-color: palette($palette-primary, 500);
+    box-shadow: 0 2px 8px color-opacity(palette($palette-primary, 500), 0.1);
     
     &:hover {
-      background: $color-primary;
+      background: palette($palette-primary, 500);
       color: $color-white;
-      box-shadow: 0 4px 12px color-opacity($color-primary, 0.3);
+      box-shadow: 0 4px 12px color-opacity(palette($palette-primary, 500), 0.3);
       transform: translateY(-2px);
     }
     
     &:active {
       transform: translateY(0);
-      box-shadow: 0 2px 8px color-opacity($color-primary, 0.1);
+      box-shadow: 0 2px 8px color-opacity(palette($palette-primary, 500), 0.1);
     }
     
     &:focus {
-      box-shadow: 0 0 0 4px color-opacity($color-primary, 0.2);
+      box-shadow: 0 0 0 4px color-opacity(palette($palette-primary, 500), 0.2);
     }
   }
   
   &__ghost {
     background: transparent;
-    color: $color-text-primary;
+    color: color('primary', 500);
     border-color: transparent;
     
     &:hover {
-      background: $color-gray-100;
-      box-shadow: 0 4px 12px color-opacity($color-gray-300, 0.2);
+      background: color('gray', 100);
+      box-shadow: 0 4px 12px color-opacity(color('gray', 300), 0.2);
       transform: translateY(-2px);
     }
     
     &:active {
       transform: translateY(0);
-      background: $color-gray-200;
+      background: color('gray', 200);
     }
     
     &:focus {
-      box-shadow: 0 0 0 4px color-opacity($color-gray-300, 0.1);
+      box-shadow: 0 0 0 4px color-opacity(color('gray', 300), 0.1);
     }
   }
   
   // Erfolgs-, Warn- und Error-Varianten mit modernem Look
   &__success {
-    background: linear-gradient(135deg, $color-success, darken($color-success, 10%));
+    background: linear-gradient(135deg, color('success', 500), color('success', 700));
     color: $color-white;
-    box-shadow: 0 4px 12px color-opacity($color-success, 0.3);
+    box-shadow: 0 4px 12px color-opacity(color('success', 500), 0.3);
     
     &:hover {
-      background: linear-gradient(135deg, darken($color-success, 10%), $color-success);
+      background: linear-gradient(135deg, color('success', 700), color('success', 500));
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px color-opacity($color-success, 0.4);
+      box-shadow: 0 6px 16px color-opacity(color('success', 500), 0.4);
     }
   }
   
   &__warning {
-    background: linear-gradient(135deg, $color-warning, darken($color-warning, 10%));
+    background: linear-gradient(135deg, color('warning', 500), dcolor('warning', 700));
     color: $color-white;
-    box-shadow: 0 4px 12px color-opacity($color-warning, 0.3);
+    box-shadow: 0 4px 12px color-opacity(color('warning', 500), 0.3);
     
     &:hover {
-      background: linear-gradient(135deg, darken($color-warning, 10%), $color-warning);
+      background: linear-gradient(135deg, color('warning', 700), color('warning', 500));
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px color-opacity($color-warning, 0.4);
+      box-shadow: 0 6px 16px color-opacity(color('warning', 500), 0.4);
     }
   }
   
   &__error {
-    background: linear-gradient(135deg, $color-error, darken($color-error, 10%));
+    background: linear-gradient(135deg, color('error', 500), color('error', 700));
     color: $color-white;
-    box-shadow: 0 4px 12px color-opacity($color-error, 0.3);
+    box-shadow: 0 4px 12px color-opacity(color('error', 500), 0.3);
     
     &:hover {
-      background: linear-gradient(135deg, darken($color-error, 10%), $color-error);
+      background: linear-gradient(135deg, color('error', 700), color('error', 500));
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px color-opacity($color-error, 0.4);
+      box-shadow: 0 6px 16px color-opacity(color('error', 500), 0.4);
     }
   }
   
@@ -194,7 +194,7 @@
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    color: $color-text-primary;
+    color: color('primary', 500);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     
     &:hover {

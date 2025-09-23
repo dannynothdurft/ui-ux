@@ -1,264 +1,232 @@
 // =============================================================================
-// FARB-SYSTEM
+// COLOR SYSTEM WITH SHADES (50–900) + NEUTRALS & SEMANTIC VARIABLES
 // =============================================================================
 
-// =============================================================================
-// FARBPALETTE - GRUNDFARBEN
-// =============================================================================
-
-// Primärfarbe (Markenfarbe)
-$color-primary: #3b82f6 !default;
-$color-primary-light: #93c5fd !default;
-$color-primary-dark: #1d4ed8 !default;
-
-// Sekundärfarbe (Unterstützende Farbe)
-$color-secondary: #8b5cf6 !default;
-$color-secondary-light: #c4b5fd !default;
-$color-secondary-dark: #5b21b6 !default;
-
-// Akzentfarbe (Für Hervorhebungen)
-$color-accent: #ec4899 !default;
-$color-accent-light: #fbcfe8 !default;
-$color-accent-dark: #be185d !default;
-
-// =============================================================================
-// FUNKTIONALE FARBEN
+// PALETTES
 // =============================================================================
 
-// Erfolgsfarbe
-$color-success: #10b981 !default;
-$color-success-light: #a7f3d0 !default;
-$color-success-dark: #047857 !default;
+$palette-primary: (
+  50:  #eff6ff,
+  100: #dbeafe,
+  200: #bfdbfe,
+  300: #93c5fd,
+  400: #60a5fa,
+  500: #3b82f6,
+  600: #2563eb,
+  700: #1d4ed8,
+  800: #1e40af,
+  900: #1e3a8a
+) !default;
 
-// Warnfarbe
-$color-warning: #f59e0b !default;
-$color-warning-light: #fde68a !default;
-$color-warning-dark: #b45309 !default;
+$palette-secondary: (
+  50:  #f5f3ff,
+  100: #ede9fe,
+  200: #ddd6fe,
+  300: #c4b5fd,
+  400: #a78bfa,
+  500: #8b5cf6,
+  600: #7c3aed,
+  700: #6d28d9,
+  800: #5b21b6,
+  900: #4c1d95
+) !default;
 
-// Fehlerfarbe
-$color-error: #ef4444 !default;
-$color-error-light: #fecaca !default;
-$color-error-dark: #b91c1c !default;
+$palette-accent: (
+  50:  #fdf2f8,
+  100: #fce7f3,
+  200: #fbcfe8,
+  300: #f9a8d4,
+  400: #f472b6,
+  500: #ec4899,
+  600: #db2777,
+  700: #be185d,
+  800: #9d174d,
+  900: #831843
+) !default;
 
-// Informationen
-$color-info: #06b6d4 !default;
-$color-info-light: #a5f3fc !default;
-$color-info-dark: #0e7490 !default;
+$palette-success: (
+  100: #dcfce7,
+  500: #10b981,
+  700: #047857
+) !default;
 
-// =============================================================================
-// NEUTRALE FARBEN
-// =============================================================================
+$palette-warning: (
+  100: #fef3c7,
+  500: #f59e0b,
+  700: #b45309
+) !default;
 
-// Grauskala
-$color-gray-50: #f9fafb !default;
-$color-gray-100: #f3f4f6 !default;
-$color-gray-200: #e5e7eb !default;
-$color-gray-300: #d1d5db !default;
-$color-gray-400: #9ca3af !default;
-$color-gray-500: #6b7280 !default;
-$color-gray-600: #4b5563 !default;
-$color-gray-700: #374151 !default;
-$color-gray-800: #1f2937 !default;
-$color-gray-900: #111827 !default;
+$palette-error: (
+  100: #fee2e2,
+  500: #ef4444,
+  700: #b91c1c
+) !default;
 
-// Schwarz und Weiß
+$palette-info: (
+  100: #cffafe,
+  500: #06b6d4,
+  700: #0e7490
+) !default;
+
+$palette-gray: (
+  50:  #f9fafb,
+  100: #f3f4f6,
+  200: #e5e7eb,
+  300: #d1d5db,
+  400: #9ca3af,
+  500: #6b7280,
+  600: #4b5563,
+  700: #374151,
+  800: #1f2937,
+  900: #111827
+) !default;
+
 $color-white: #ededed !default;
 $color-black: #1f1f1f !default;
 
-// =============================================================================
-// TEXTFARBEN
-// =============================================================================
-
-$color-text-primary: $color-gray-900 !default;
-$color-text-secondary: $color-gray-600 !default;
-$color-text-tertiary: $color-gray-400 !default;
-$color-text-inverse: $color-white !default;
-
-// =============================================================================
-// HINTERGRUNDFARBEN
-// =============================================================================
-
-$color-background-primary: $color-white !default;
-$color-background-secondary: $color-gray-100 !default;
-$color-background-tertiary: $color-gray-200 !default;
-$color-background-inverse: $color-gray-900 !default;
-
-$color-background-alt: #f8fafc;
-$color-background-hover: #f1f5f9;
-$color-background-active: #e2e8f0;
-
-// =============================================================================
-// RAHMENFARBEN
-// =============================================================================
-
-$color-border-primary: $color-gray-300 !default;
-$color-border-secondary: $color-gray-200 !default;
-$color-border-tertiary: $color-gray-100 !default;
-
-// =============================================================================
-// FARB-UTILITIES
-// =============================================================================
-
-// Farb-Map für dynamische Nutzung
-$colors: (
-  'primary': $color-primary,
-  'primary-light': $color-primary-light,
-  'primary-dark': $color-primary-dark,
-  'secondary': $color-secondary,
-  'secondary-light': $color-secondary-light,
-  'secondary-dark': $color-secondary-dark,
-  'accent': $color-accent,
-  'accent-light': $color-accent-light,
-  'accent-dark': $color-accent-dark,
-  'success': $color-success,
-  'success-light': $color-success-light,
-  'success-dark': $color-success-dark,
-  'warning': $color-warning,
-  'warning-light': $color-warning-light,
-  'warning-dark': $color-warning-dark,
-  'error': $color-error,
-  'error-light': $color-error-light,
-  'error-dark': $color-error-dark,
-  'info': $color-info,
-  'info-light': $color-info-light,
-  'info-dark': $color-info-dark,
-  'white': $color-white,
-  'black': $color-black
+$palettes: (
+  'primary': $palette-primary,
+  'secondary': $palette-secondary,
+  'accent': $palette-accent,
+  'success': $palette-success,
+  'warning': $palette-warning,
+  'error': $palette-error,
+  'info': $palette-info,
+  'gray': $palette-gray
 ) !default;
 
-// Graustufen-Map
-$grays: (
-  '50': $color-gray-50,
-  '100': $color-gray-100,
-  '200': $color-gray-200,
-  '300': $color-gray-300,
-  '400': $color-gray-400,
-  '500': $color-gray-500,
-  '600': $color-gray-600,
-  '700': $color-gray-700,
-  '800': $color-gray-800,
-  '900': $color-gray-900
-) !default;
 
-// =============================================================================
-// FARB-FUNKTIONEN
+// COLOR FUNCTIONS
 // =============================================================================
 
-// Funktion zum Erhalten einer Farbe aus der Map
-@function color($key) {
-  @if map-has-key($colors, $key) {
-    @return map-get($colors, $key);
-  } @else {
-    @error "Farbe '#{$key}' wurde nicht in der Farb-Map gefunden.";
-  }
-}
-
-// Funktion zum Erhalten einer Graustufe
-@function gray($key) {
-  @if map-has-key($grays, $key) {
-    @return map-get($grays, $key);
-  } @else {
-    @error "Graustufe '#{$key}' wurde nicht in der Graustufen-Map gefunden.";
-  }
-}
-
-// Funktion zum Anpassen der Deckkraft einer Farbe
-@function color-opacity($color, $opacity) {
-  @return rgba($color, $opacity);
-}
-
-// =============================================================================
-// FARB-MIXINS
-// =============================================================================
-
-// Mixin für dynamische Farbanwendung
-@mixin color-variant($background, $color: null, $border: null) {
-  background-color: $background;
-  
-  @if $color {
-    color: $color;
-  } @else {
-    // Automatische Textfarbe basierend auf Hintergrundhelligkeit
-    @if (lightness($background) > 60) {
-      color: $color-text-primary;
+// Interne Helfer-Funktion: hole Palette-Map aus $palettes wenn $palette ein String ist
+@function _resolve-palette($palette-or-name) {
+  @if type-of($palette-or-name) == 'string' {
+    @if map-has-key($palettes, $palette-or-name) {
+      @return map-get($palettes, $palette-or-name);
     } @else {
-      color: $color-text-inverse;
+      @error "Palette '#{$palette-or-name}' wurde nicht gefunden in $palettes.";
+    }
+  } @else if type-of($palette-or-name) == 'map' {
+    @return $palette-or-name;
+  } @else {
+    @error "Erwarte Palette (Map) oder Palette-Name (String).";
+  }
+}
+
+// Hole Shade aus Palette (akzeptiert Map oder String-Name)
+@function palette($palette-or-name, $shade) {
+  $palette-map: _resolve-palette($palette-or-name);
+  @if map-has-key($palette-map, $shade) {
+    @return map-get($palette-map, $shade);
+  } @else {
+    @error "Shade '#{$shade}' wurde in der Palette nicht gefunden.";
+  }
+}
+
+// Convenience: color('primary', 500)
+@function color($name, $shade: 500) {
+  @return palette($name, $shade);
+}
+
+// Convenience: gray(700)
+@function gray($shade: 500) {
+  @return palette('gray', $shade);
+}
+
+// Opacity helper
+@function color-with-alpha($value, $alpha) {
+  @return rgba($value, $alpha);
+}
+
+@function palette-opacity($palette-or-name, $shade, $alpha) {
+  @return rgba(palette($palette-or-name, $shade), $alpha);
+}
+
+// =============================================================================
+// CSS-Custom-PROPERTIES (automatisch für alle Paletten & Shades)
+// =============================================================================
+
+:root {
+  /* Palette variables -- color-{name}-{shade} */
+  @each $name, $palette-map in $palettes {
+    @each $shade, $value in $palette-map {
+      --color-#{$name}-#{$shade}: #{$value};
     }
   }
-  
-  @if $border {
-    border-color: $border;
+
+  /* Semantic shortcuts (referenzieren die shade-Variablen) */
+  --color-primary: var(--color-primary-500);
+  --color-secondary: var(--color-secondary-500);
+  --color-accent: var(--color-accent-500);
+
+  --color-text-primary: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-tertiary: var(--color-gray-400);
+  --color-text-inverse: var(--color-white);
+
+  --color-background-primary: var(--color-gray-50);
+  --color-background-secondary: var(--color-gray-100);
+  --color-background-tertiary: var(--color-gray-200);
+  --color-background-inverse: var(--color-gray-900);
+
+  --color-border-primary: var(--color-gray-300);
+  --color-border-secondary: var(--color-gray-200);
+  --color-border-tertiary: var(--color-gray-100);
+}
+
+/* Dark mode semantic overrides (prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: var(--color-gray-100);
+    --color-text-secondary: var(--color-gray-300);
+    --color-background-primary: var(--color-gray-900);
+    --color-background-secondary: var(--color-gray-800);
+    --color-background-tertiary: var(--color-gray-700);
+    --color-border-primary: var(--color-gray-700);
   }
 }
 
-// Mixin für Farbübergänge
+// =============================================================================
+// UTILITIES / MIXINS
+// =============================================================================
+
+// Background helper: akzeptiert Palette-Name (String) oder Map
+@mixin bg-color($palette-or-name, $shade) {
+  background-color: palette($palette-or-name, $shade);
+}
+
+// Text color helper
+@mixin text-color($palette-or-name, $shade) {
+  color: palette($palette-or-name, $shade);
+}
+
+// Border helper
+@mixin border-color($palette-or-name, $shade) {
+  border-color: palette($palette-or-name, $shade);
+}
+
+// Transition helper
 @mixin color-transition($properties: all, $duration: 0.2s, $timing: ease-in-out) {
   transition: $properties $duration $timing;
 }
 
-// =============================================================================
-// THEMING
-// =============================================================================
+// Auto-contrast helper: wählt Textfarbe (hell/dunkel) basierend auf Hintergrund-Lightness
+@mixin color-variant($background, $text: null, $border: null) {
+  background-color: $background;
 
-// Dunkles Theme Variablen
-$dark-theme: (
-  'text-primary': $color-gray-100,
-  'text-secondary': $color-gray-300,
-  'text-tertiary': $color-gray-500,
-  'background-primary': $color-gray-900,
-  'background-secondary': $color-gray-800,
-  'background-tertiary': $color-gray-700,
-  'border-primary': $color-gray-700,
-  'border-secondary': $color-gray-600,
-  'border-tertiary': $color-gray-500
-) !default;
-
-// Mixin für Dark Mode
-@mixin dark-mode {
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-text-primary: #{map-get($dark-theme, 'text-primary')};
-      --color-text-secondary: #{map-get($dark-theme, 'text-secondary')};
-      --color-text-tertiary: #{map-get($dark-theme, 'text-tertiary')};
-      --color-background-primary: #{map-get($dark-theme, 'background-primary')};
-      --color-background-secondary: #{map-get($dark-theme, 'background-secondary')};
-      --color-background-tertiary: #{map-get($dark-theme, 'background-tertiary')};
-      --color-border-primary: #{map-get($dark-theme, 'border-primary')};
-      --color-border-secondary: #{map-get($dark-theme, 'border-secondary')};
-      --color-border-tertiary: #{map-get($dark-theme, 'border-tertiary')};
+  @if $text != null {
+    color: $text;
+  } @else {
+    // Fallback: wenn Hintergrund hell -> dunkler Text, sonst heller Text
+    @if lightness($background) > 60 {
+      color: palette('gray', 900);
+    } @else {
+      color: palette('gray', 50);
     }
   }
-}
 
-// CSS Custom Properties für Theming
-:root {
-  // Primärfarben
-  --color-primary: #{$color-primary};
-  --color-primary-light: #{$color-primary-light};
-  --color-primary-dark: #{$color-primary-dark};
-  
-  // Sekundärfarben
-  --color-secondary: #{$color-secondary};
-  --color-secondary-light: #{$color-secondary-light};
-  --color-secondary-dark: #{$color-secondary-dark};
-  
-  // Textfarben
-  --color-text-primary: #{$color-text-primary};
-  --color-text-secondary: #{$color-text-secondary};
-  --color-text-tertiary: #{$color-text-tertiary};
-  --color-text-inverse: #{$color-text-inverse};
-  
-  // Hintergrundfarben
-  --color-background-primary: #{$color-background-primary};
-  --color-background-secondary: #{$color-background-secondary};
-  --color-background-tertiary: #{$color-background-tertiary};
-  --color-background-inverse: #{$color-background-inverse};
-  
-  // Rahmenfarben
-  --color-border-primary: #{$color-border-primary};
-  --color-border-secondary: #{$color-border-secondary};
-  --color-border-tertiary: #{$color-border-tertiary};
+  @if $border != null {
+    border-color: $border;
+  }
 }
-
-// Dark Mode aktivieren
-@include dark-mode;

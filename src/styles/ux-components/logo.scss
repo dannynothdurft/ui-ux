@@ -103,7 +103,7 @@
   &__fallback-icon {
     width: 100%;
     height: 100%;
-    background-color: $color-primary;
+    background-color: palette($palette-primary, 500);
     border-radius: $border-radius-sm;
     display: flex;
     align-items: center;
@@ -120,13 +120,13 @@
   &__text {
     font-weight: $font-weight-bold;
     line-height: 1.1;
-    color: $color-text-primary;
+    color: text-color('primary', 500);
   }
   
   &__tagline {
     font-weight: $font-weight-normal;
     line-height: 1.2;
-    color: $color-text-secondary;
+    color: text-color('secondary', 500);
     margin-top: 0.25em;
   }
   
@@ -142,7 +142,7 @@
   
   // Focus Styles (für direkt fokussierbares Logo)
   &:focus {
-    outline: 2px solid $color-primary;
+    outline: 2px solid palette($palette-primary, 500);
     outline-offset: 2px;
     border-radius: $border-radius-sm;
   }
@@ -150,11 +150,11 @@
   // Dark Mode
   @media (prefers-color-scheme: dark) {
     .logo__text {
-      color: $color-text-secondary;
+      color: text-color('secondary', 500);
     }
     
     .logo__tagline {
-      color: $color-text-tertiary;
+      color: color('primary', 200);
     }
   }
 }

@@ -152,7 +152,7 @@ $shadow-map: (
   transition: $properties $duration $timing;
 }
 
-@mixin focus-ring($color: $color-primary, $size: 3px) {
+@mixin focus-ring($color: palette($palette-primary, 500), $size: 3px) {
   outline: 2px solid transparent;
   outline-offset: 2px;
   box-shadow: 0 0 0 $size $color;

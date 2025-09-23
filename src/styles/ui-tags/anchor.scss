@@ -20,7 +20,7 @@
 
   // Interaktion
   &:focus {
-    outline: 2px solid $color-primary;
+    outline: 2px solid palette($palette-primary, 500);
     outline-offset: 2px;
     border-radius: $border-radius-sm;
   }
@@ -57,99 +57,99 @@
 
   // 🎨 Style-Props: Varianten
   &__primary {
-    color: $color-primary;
+    color: palette($palette-primary, 500);
 
     &:hover {
-      color: $color-primary-dark;
+      color: palette($palette-primary, 700);
     }
 
     &:active {
-      color: $color-primary-light;
+      color: palette($palette-primary, 100);
     }
 
     &:focus {
-      outline-color: $color-primary;
+      outline-color: palette($palette-primary, 500);
     }
   }
 
   &__secondary {
-    color: $color-secondary;
+    color: color('primary', 500);
 
     &:hover {
-      color: $color-secondary-dark;
+      color: color('primary', 700);
     }
 
     &:active {
-      color: $color-secondary-light;
+      color: color('primary', 300);
     }
 
     &:focus {
-      outline-color: $color-secondary;
+      outline-color: color('primary', 500);
     }
   }
 
   &__default {
-    color: $color-text-primary;
+    color: color('primary', 500);
 
     &:hover {
-      color: darken($color-text-secondary, 10%);
+      color: color('primary', 700);
     }
 
     &:active {
-      color: lighten($color-text-tertiary, 10%);
+      color: color('primary', 300);
     }
 
     &:focus {
-      outline-color: $color-text-secondary;
+      outline-color: color('secondary', 500);
     }
   }
 
   // ✅ NEUE VARIANTEN: Success, Warning, Error
   &__success {
-    color: $color-success;
+    color: color('success', 500);
 
     &:hover {
-      color: $color-success-dark;
+      color: color('success', 700);
     }
 
     &:active {
-      color: $color-success-light;
+      color: color('success', 100);
     }
 
     &:focus {
-      outline-color: $color-success;
+      outline-color: color('success', 500);
     }
   }
 
   &__warning {
-    color: $color-warning;
+    color: color('warning', 500);
 
     &:hover {
-      color: $color-warning-dark;
+      color: color('warning', 700);
     }
 
     &:active {
-      color: $color-warning-light;
+      color: color('warning', 100);
     }
 
     &:focus {
-      outline-color: $color-warning;
+      outline-color: color('warning', 500);
     }
   }
 
   &__error {
-    color: $color-error;
+    color: color('error');
 
     &:hover {
-      color: $color-error-dark;
+      color: color('error', 700);
     }
 
     &:active {
-      color: $color-error-light;
+      color: color('error', 100);
     }
 
     &:focus {
-      outline-color: $color-error;
+      outline-color: color('error', 500);
     }
   }
 
@@ -190,44 +190,44 @@
 
   // Button-ähnliche Links
   &__button {
-    border: 1px solid $color-primary;
+    border: 1px solid palette($palette-primary, 500);
     border-radius: $border-radius-md;
     padding: $spacing-xs $spacing-sm;
 
     &:hover {
-      background-color: color-opacity($color-primary, 0.1);
+      background-color: color-opacity(palette($palette-primary, 500), 0.1);
     }
 
     // Button-Varianten für die neuen Farben
     &.anchor__success {
-      border-color: $color-success;
+      border-color: color('success', 500);
 
       &:hover {
-        background-color: color-opacity($color-success, 0.1);
+        background-color: color-opacity(color('success', 500), 0.1);
       }
     }
 
     &.anchor__warning {
-      border-color: $color-warning;
+      border-color: color('warning', 500);
 
       &:hover {
-        background-color: color-opacity($color-warning, 0.1);
+        background-color: color-opacity(color('warning', 500), 0.1);
       }
     }
 
     &.anchor__error {
-      border-color: $color-error;
+      border-color: color('error', 500);
 
       &:hover {
-        background-color: color-opacity($color-error, 0.1);
+        background-color: color-opacity(color('error', 500), 0.1);
       }
     }
 
     &.anchor__secondary {
-      border-color: $color-secondary;
+      border-color: color('primary', 500);
 
       &:hover {
-        background-color: color-opacity($color-secondary, 0.1);
+        background-color: color-opacity(color('primary', 500), 0.1);
       }
     }
   }

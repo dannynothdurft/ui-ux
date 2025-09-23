@@ -65,7 +65,7 @@
     width: 85%;
     max-width: 400px;
     height: 100%;
-    background-color: $color-background-primary;
+    background-color: color('primary', 500);
     box-shadow: $shadow-md;
     transition: right $transition-duration-slow $transition-timing-ease;
     z-index: 999;
@@ -82,14 +82,14 @@
     display: flex;
     justify-content: flex-end;
     padding: 16px;
-    border-bottom: 1px solid $color-border-primary;
+    border-bottom: 1px solid color('primary');
   }
 
   &__close {
     background: none;
     border: none;
     cursor: pointer;
-    color: $color-text-primary;
+    color: text-color('primary', 500);
   }
 
   &__list {
@@ -99,7 +99,7 @@
   }
 
   &__item {
-    border-bottom: 1px solid $color-border-secondary;
+    border-bottom: 1px solid color('secondary');
   }
 
   &__link {
@@ -108,7 +108,7 @@
     width: 100%;
     padding: 16px 20px;
     text-decoration: none;
-    color: $color-text-primary;
+    color: text-color('primary', 500);
     background: none;
     border: none;
     text-align: left;
@@ -117,8 +117,8 @@
     transition: background-color 0.2s;
 
     &--active {
-      color: $color-primary;
-      background-color: $color-background-active;
+      color: palette($palette-primary, 500);
+      background-color: color('primary', 700);
     }
 
     &--has-children {
@@ -126,7 +126,7 @@
     }
 
     &:hover {
-      background-color: $color-background-hover;
+      background-color: color('primary', 400);
     }
   }
 
@@ -154,20 +154,20 @@
     }
 
     &-item {
-      border-top: 1px solid $color-border-secondary;
+      border-top: 1px solid color('secondary');
     }
 
     &-link {
       display: block;
       padding: 14px 20px 14px 52px;
       text-decoration: none;
-      color: $color-text-secondary;
+      color: text-color('secondary', 500);
       font-size: 15px;
       transition: background-color 0.2s, color 0.2s;
 
       &:hover {
-        background-color: $color-background-hover;
-        color: $color-text-primary;
+        background-color: color('primary', 400);
+        color: text-color('primary', 500);
       }
     }
   }
@@ -183,14 +183,14 @@
 
     &-section {
       padding: 16px 20px 16px 52px;
-      border-top: 1px solid $color-border-secondary;
+      border-top: 1px solid color('secondary');
     }
 
     &-title {
       margin: 0 0 12px 0;
       font-size: 15px;
       font-weight: 600;
-      color: $color-text-primary;
+      color: text-color('primary', 500);
     }
 
     &-list {
@@ -206,12 +206,12 @@
     &-link {
       display: block;
       text-decoration: none;
-      color: $color-text-secondary;
+      color: text-color('secondary', 500);
       font-size: 14px;
       transition: color 0.2s;
 
       &:hover {
-        color: $color-text-primary;
+        color: text-color('primary', 500);
       }
     }
   }
