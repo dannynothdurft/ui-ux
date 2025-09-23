@@ -3,16 +3,14 @@
 // =============================================================================
 
 // =============================================================================
-// CONTAINER
+// VARIABLEN
 // =============================================================================
 
+// Container
 $container-max-width: 1200px !default;
 $container-padding: $spacing-container !default;
 
-// =============================================================================
-// GRID-SYSTEM
-// =============================================================================
-
+// Grid
 $grid-columns: 12 !default;
 $grid-gap: $spacing-lg !default;
 $grid-gaps: (
@@ -21,10 +19,7 @@ $grid-gaps: (
   'lg': $spacing-xl
 ) !default;
 
-// =============================================================================
-// Z-INDEX SKALA
-// =============================================================================
-
+// Z-Index
 $z-index-dropdown: 1000 !default;
 $z-index-sticky: 1020 !default;
 $z-index-fixed: 1030 !default;
@@ -39,13 +34,34 @@ $z-index-toast: 1080 !default;
 // =============================================================================
 
 // Container Mixin
-@mixin container($max-width: $container-max-width, $padding: $container-padding) {
+@mixin container($max-width: $container-max-width, $padding-xs: $spacing-sm, $padding-sm: $spacing-md, $padding-md: $spacing-lg, $padding-lg: $spacing-xl, $padding-xl: $spacing-xxl) {
   width: 100%;
   max-width: $max-width;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $padding;
-  padding-right: $padding;
+  
+  padding-left: $padding-xs;
+  padding-right: $padding-xs;
+
+  @include min-breakpoint('sm') {
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+  }
+
+  @include min-breakpoint('md') {
+    padding-left: $padding-md;
+    padding-right: $padding-md;
+  }
+
+  @include min-breakpoint('lg') {
+    padding-left: $padding-lg;
+    padding-right: $padding-lg;
+  }
+
+  @include min-breakpoint('xl') {
+    padding-left: $padding-xl;
+    padding-right: $padding-xl;
+  }
 }
 
 // Grid Mixin
@@ -56,7 +72,7 @@ $z-index-toast: 1080 !default;
 }
 
 // Flexbox Mixin
-@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+@mixin flex($direction: column, $justify: center, $align: center, $wrap: nowrap) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
@@ -67,7 +83,6 @@ $z-index-toast: 1080 !default;
 // Position Mixin
 @mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
   position: $position;
-  
   @if $top { top: $top; }
   @if $right { right: $right; }
   @if $bottom { bottom: $bottom; }
@@ -100,13 +115,11 @@ $z-index-toast: 1080 !default;
 
 @mixin aspect-ratio($width, $height) {
   position: relative;
-  
   &::before {
     content: '';
     display: block;
     padding-top: calc(($height / $width) * 100%);
   }
-  
   > * {
     position: absolute;
     top: 0;
@@ -133,6 +146,7 @@ $z-index-toast: 1080 !default;
   --z-index-dropdown: #{$z-index-dropdown};
   --z-index-sticky: #{$z-index-sticky};
   --z-index-fixed: #{$z-index-fixed};
+  --z-index-modal-backdrop: #{$z-index-modal-backdrop};
   --z-index-modal: #{$z-index-modal};
   --z-index-popover: #{$z-index-popover};
   --z-index-tooltip: #{$z-index-tooltip};

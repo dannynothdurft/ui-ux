@@ -85,22 +85,12 @@
 }
 
 .section__container {
-  width: 100%;
-  max-width: $xxl;
-  margin: 0 auto;
-  padding: 0 1rem;
-  
-  @include min-breakpoint('md') {
-    padding: 0 2rem;
-  }
+  @include container();
 }
 
 // Section Content (Mobile First)
 .section-content {
-  display: flex;
-  width: 100%;
-  flex-direction: column; // Standard: immer column auf Mobile
-  
+  @include flex();
   // Flex Layout Varianten - Mobile zuerst column, dann responsive
   &--flex-row {
     @include min-breakpoint('md') {
@@ -122,14 +112,11 @@
   
   // Grid Layout Varianten (Mobile First)
   &--grid-1 {
-    display: grid;
-    grid-template-columns: 1fr;
+    @include grid(1)
   }
   
   &--grid-2 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xxl;
+     @include grid(1, $spacing-xxl);
     
     @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
@@ -137,9 +124,7 @@
   }
   
   &--grid-3 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xxl;
+    @include grid(1, $spacing-xxl);
     
     @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
@@ -151,9 +136,7 @@
   }
   
   &--grid-4 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xxl;
+    @include grid(1, $spacing-xxl);
     
     @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
@@ -169,9 +152,7 @@
   }
   
   &--grid-5 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xxl;
+     @include grid(1, $spacing-xxl);
     
     @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
@@ -187,9 +168,7 @@
   }
   
   &--grid-6 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $spacing-xxl;
+     @include grid(1, $spacing-xxl);
     
     @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
@@ -370,9 +349,8 @@
 
 // Section Image
 .section-image {
-  display: flex;
-  justify-content: center;
-  margin-bottom: $spacing-xxl; // Standard Abstand unten auf Mobile
+  @include flex();
+  margin-bottom: $spacing-xxl;
   
   @include min-breakpoint('md') {
     margin-bottom: 0;
@@ -424,8 +402,7 @@
 
 // Section Text
 .section-text {
-  display: flex;
-  flex-direction: column;
+  @include flex();
   
   &--center {
     text-align: center;
@@ -441,7 +418,7 @@
 }
 
 // Mobile Optimization
-@media (max-width: $lg) {
+@include max-breakpoint('lg') {
   .section-content {
     // Sicherstellen, dass Flex-Items auf Mobile untereinander stehen
     &--flex-row,
