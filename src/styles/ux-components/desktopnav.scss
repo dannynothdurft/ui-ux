@@ -189,7 +189,7 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: $spacing-md;
 
-  @media (max-width: $xl) {
+  @include max-breakpoint('xl') {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -258,7 +258,7 @@
 }
 
 // Responsive für Desktop
-@media #{ $mqLG } {
+@include min-breakpoint('md') {
   .desktop-nav {
       display: inline-flex;
   }

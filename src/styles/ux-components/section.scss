@@ -39,7 +39,7 @@
   }
   
   // Responsive Padding für größere Screens
-  @media #{$mqLG} {
+  @include min-breakpoint('md') {
     &--padding {
       &-xs {
         padding: $spacing-sm * 1.5 0;
@@ -63,7 +63,7 @@
     }
   }
   
-  @media #{$mqXL} {
+  @include min-breakpoint('lg') {
     &--padding {
       &-small {
         padding: $spacing-lg * 2 0;
@@ -90,7 +90,7 @@
   margin: 0 auto;
   padding: 0 1rem;
   
-  @media #{$mqLG} {
+  @include min-breakpoint('md') {
     padding: 0 2rem;
   }
 }
@@ -103,7 +103,7 @@
   
   // Flex Layout Varianten - Mobile zuerst column, dann responsive
   &--flex-row {
-    @media #{$mqLG} {
+    @include min-breakpoint('md') {
       flex-direction: row;
     }
   }
@@ -131,7 +131,7 @@
     grid-template-columns: 1fr;
     gap: $spacing-xxl;
     
-    @media #{$mqMD} {
+    @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -141,11 +141,11 @@
     grid-template-columns: 1fr;
     gap: $spacing-xxl;
     
-    @media #{$mqMD} {
+    @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @media #{$mqLG} {
+    @include min-breakpoint('md') {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -155,15 +155,15 @@
     grid-template-columns: 1fr;
     gap: $spacing-xxl;
     
-    @media #{$mqMD} {
+    @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @media #{$mqLG} {
+    @include min-breakpoint('md') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @media #{$mqXL} {
+    @include min-breakpoint('lg') {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -173,15 +173,15 @@
     grid-template-columns: 1fr;
     gap: $spacing-xxl;
     
-    @media #{$mqMD} {
+    @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @media #{$mqLG} {
+    @include min-breakpoint('md') {
       grid-template-columns: repeat(3, 1fr);
     }
     
-    @media #{$mqXL} {
+    @include min-breakpoint('lg') {
       grid-template-columns: repeat(5, 1fr);
     }
   }
@@ -191,15 +191,15 @@
     grid-template-columns: 1fr;
     gap: $spacing-xxl;
     
-    @media #{$mqMD} {
+    @include min-breakpoint('sm') {
       grid-template-columns: repeat(2, 1fr);
     }
     
-    @media #{$mqLG} {
+    @include min-breakpoint('md') {
       grid-template-columns: repeat(3, 1fr);
     }
     
-    @media #{$mqXL} {
+    @include min-breakpoint('lg') {
       grid-template-columns: repeat(6, 1fr);
     }
   }
@@ -282,7 +282,7 @@
     // Mobile: Bild über Text
     flex-direction: column;
     
-    @media #{$mqLG} {
+    @include min-breakpoint('md') {
       flex-direction: row;
       
       .section-image {
@@ -296,7 +296,7 @@
     // Mobile: Bild über Text
     flex-direction: column;
     
-    @media #{$mqLG} {
+    @include min-breakpoint('md') {
       flex-direction: row-reverse;
       
       .section-image {
@@ -317,7 +317,7 @@
   // Flex Items sind standardmäßig full width auf Mobile
   width: 100%;
   
-  @media #{$mqLG} {
+  @include min-breakpoint('md') {
     width: auto;
   }
   
@@ -374,7 +374,7 @@
   justify-content: center;
   margin-bottom: $spacing-xxl; // Standard Abstand unten auf Mobile
   
-  @media #{$mqLG} {
+  @include min-breakpoint('md') {
     margin-bottom: 0;
   }
   

@@ -11,7 +11,7 @@
     cursor: pointer;
     padding: 0;
 
-    @media #{ $mqLG } {
+    @include min-breakpoint('md') {
       display: none;
     }
 

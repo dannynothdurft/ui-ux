@@ -160,7 +160,7 @@
 }
 
 // Responsive Logo
-@media (max-width: $md) {
+@include max-breakpoint('md') {
   .logo--responsive {
     &.logo--horizontal {
       flex-direction: column;
