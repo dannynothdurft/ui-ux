@@ -161,22 +161,3 @@ $shadow-map: (
 // =============================================================================
 // CSS CUSTOM PROPERTIES
 // =============================================================================
-
-:root {
-  // Border-Radius
-  --border-radius-sm: #{$border-radius-sm};
-  --border-radius-md: #{$border-radius-md};
-  --border-radius-lg: #{$border-radius-lg};
-  --border-radius-xl: #{$border-radius-xl};
-  --border-radius-xxl: #{$border-radius-xxl};
-  --border-radius-full: #{$border-radius-full};
-  
-  // Schatten
-  --shadow-sm: #{$shadow-sm};
-  --shadow-md: #{$shadow-md};
-  --shadow-lg: #{$shadow-lg};
-  --shadow-xl: #{$shadow-xl};
-  --shadow-xxl: #{$shadow-xxl};
-  --shadow-inner: #{$shadow-inner};
-  --shadow-focus: #{$shadow-focus};
-}

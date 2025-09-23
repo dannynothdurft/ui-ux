@@ -1,32 +1,4 @@
 // =============================================================================
-// ERWEITERTE VARIABLEN
-// =============================================================================
-
-// =============================================================================
-// ANIMATION & TRANSITION
-// =============================================================================
-
-// Transition-Dauern
-$transition-duration-ultra-fast: 50ms !default;
-$transition-duration-fast: 100ms !default;
-$transition-duration-normal: 200ms !default;
-$transition-duration-slow: 300ms !default;
-$transition-duration-ultra-slow: 500ms !default;
-
-// Transition-Timing-Functions
-$transition-timing-linear: linear !default;
-$transition-timing-ease: ease !default;
-$transition-timing-ease-in: ease-in !default;
-$transition-timing-ease-out: ease-out !default;
-$transition-timing-ease-in-out: ease-in-out !default;
-$transition-timing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55) !default;
-
-// Animation-Delays
-$animation-delay-short: 100ms !default;
-$animation-delay-medium: 200ms !default;
-$animation-delay-long: 400ms !default;
-
-// =============================================================================
 // BORDER & OUTLINE
 // =============================================================================
 
@@ -42,32 +14,6 @@ $outline-width-none: 0 !default;
 $outline-width-thin: 1px !default;
 $outline-width-medium: 2px !default;
 $outline-width-thick: 3px !default;
-
-// =============================================================================
-// OPACITY STUFE
-// =============================================================================
-
-$opacity-0: 0 !default;
-$opacity-5: 0.05 !default;
-$opacity-10: 0.1 !default;
-$opacity-15: 0.15 !default;
-$opacity-20: 0.2 !default;
-$opacity-25: 0.25 !default;
-$opacity-30: 0.3 !default;
-$opacity-35: 0.35 !default;
-$opacity-40: 0.4 !default;
-$opacity-45: 0.45 !default;
-$opacity-50: 0.5 !default;
-$opacity-55: 0.55 !default;
-$opacity-60: 0.6 !default;
-$opacity-65: 0.65 !default;
-$opacity-70: 0.7 !default;
-$opacity-75: 0.75 !default;
-$opacity-80: 0.8 !default;
-$opacity-85: 0.85 !default;
-$opacity-90: 0.9 !default;
-$opacity-95: 0.95 !default;
-$opacity-100: 1 !default;
 
 // =============================================================================
 // Z-INDEX SKALA (erweitert)
@@ -105,86 +51,6 @@ $z-index-toast: 1080 !default;
 $z-index-max: 9999 !default;
 
 // =============================================================================
-// ASPECT RATIOS
-// =============================================================================
-
-$aspect-ratio-square: 1/1 !default;
-$aspect-ratio-video: 16/9 !default;
-$aspect-ratio-cinema: 21/9 !default;
-$aspect-ratio-portrait: 3/4 !default;
-$aspect-ratio-landscape: 4/3 !default;
-$aspect-ratio-panorama: 3/1 !default;
-$aspect-ratio-ultrawide: 32/9 !default;
-
-// =============================================================================
-// LAYOUT & CONTAINER
-// =============================================================================
-
-// Container Max-Widths
-$container-xs: 400px !default;
-$container-sm: 640px !default;
-$container-md: 768px !default;
-$container-lg: 1024px !default;
-$container-xl: 1280px !default;
-$container-xxl: 1536px !default;
-$container-fluid: 100% !default;
-
-// Section Paddings
-$section-padding-y-sm: $spacing-4xl !default;
-$section-padding-y-md: $spacing-5xl !default;
-$section-padding-y-lg: $spacing-6xl !default;
-$section-padding-y-xl: $spacing-7xl !default;
-
-// =============================================================================
-// GRID SYSTEM (erweitert)
-// =============================================================================
-
-$grid-columns: 12 !default;
-$grid-rows: 6 !default;
-$grid-gap: $spacing-lg !default;
-$grid-gap-sm: $spacing-md !default;
-$grid-gap-md: $spacing-lg !default;
-$grid-gap-lg: $spacing-xl !default;
-$grid-gap-xl: $spacing-xxl !default;
-
-// =============================================================================
-// COMPONENT SPECIFIC VARIABLES
-// =============================================================================
-
-// Button Variablen
-$button-height-sm: 2rem !default;
-$button-height-md: 2.5rem !default;
-$button-height-lg: 3rem !default;
-$button-height-xl: 3.5rem !default;
-
-$button-padding-x-sm: $spacing-md !default;
-$button-padding-x-md: $spacing-lg !default;
-$button-padding-x-lg: $spacing-xl !default;
-$button-padding-x-xl: $spacing-xxl !default;
-
-// Input Variablen
-$input-height-sm: 2rem !default;
-$input-height-md: 2.5rem !default;
-$input-height-lg: 3rem !default;
-
-$input-padding-x-sm: $spacing-md !default;
-$input-padding-x-md: $spacing-lg !default;
-$input-padding-x-lg: $spacing-xl !default;
-
-// Card Variablen
-$card-padding-sm: $spacing-md !default;
-$card-padding-md: $spacing-lg !default;
-$card-padding-lg: $spacing-xl !default;
-
-// Modal Variablen
-$modal-width-sm: 400px !default;
-$modal-width-md: 500px !default;
-$modal-width-lg: 600px !default;
-$modal-width-xl: 800px !default;
-
-$modal-padding: $spacing-lg !default;
-
-// =============================================================================
 // ICON & SVG VARIABLEN
 // =============================================================================
 
@@ -194,19 +60,8 @@ $icon-size-md: 1.25rem !default;
 $icon-size-lg: 1.5rem !default;
 $icon-size-xl: 2rem !default;
 $icon-size-xxl: 2.5rem !default;
-
 $icon-stroke-width: 2px !default;
 $icon-stroke-width-bold: 2.5px !default;
-
-// =============================================================================
-// SHADOW DEPTHS
-// =============================================================================
-
-$shadow-depth-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !default;
-$shadow-depth-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23) !default;
-$shadow-depth-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) !default;
-$shadow-depth-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22) !default;
-$shadow-depth-5: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !default;
 
 // =============================================================================
 // BLUR & FILTER
@@ -221,36 +76,3 @@ $backdrop-blur-sm: blur(4px) !default;
 $backdrop-blur-md: blur(8px) !default;
 $backdrop-blur-lg: blur(12px) !default;
 $backdrop-blur-xl: blur(16px) !default;
-
-// =============================================================================
-// CSS CUSTOM PROPERTIES (erweitert)
-// =============================================================================
-
-:root {
-  // Animation
-  --transition-duration-fast: #{$transition-duration-fast};
-  --transition-duration-normal: #{$transition-duration-normal};
-  --transition-duration-slow: #{$transition-duration-slow};
-  
-  // Border
-  --border-width-thin: #{$border-width-thin};
-  --border-width-medium: #{$border-width-medium};
-  --border-width-thick: #{$border-width-thick};
-  
-  // Z-Index
-  --z-index-under: #{$z-index-under};
-  --z-index-over: #{$z-index-over};
-  --z-index-modal: #{$z-index-modal};
-  --z-index-tooltip: #{$z-index-tooltip};
-  
-  // Aspect Ratios
-  --aspect-ratio-video: #{$aspect-ratio-video};
-  --aspect-ratio-square: #{$aspect-ratio-square};
-  
-  // Component Sizes
-  --button-height-md: #{$button-height-md};
-  --input-height-md: #{$input-height-md};
-  
-  // Blur
-  --blur-md: #{$blur-md};
-}

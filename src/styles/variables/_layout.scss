@@ -6,9 +6,14 @@
 // VARIABLEN
 // =============================================================================
 
-// Container
-$container-max-width: 1200px !default;
-$container-padding: $spacing-container !default;
+$aspect-ratio-square: 1/1 !default;
+$aspect-ratio-video: 16/9 !default;
+$aspect-ratio-cinema: 21/9 !default;
+$aspect-ratio-portrait: 3/4 !default;
+$aspect-ratio-landscape: 4/3 !default;
+$aspect-ratio-panorama: 3/1 !default;
+$aspect-ratio-ultrawide: 32/9 !default;
+
 
 // Grid
 $grid-columns: 12 !default;
@@ -18,16 +23,6 @@ $grid-gaps: (
   'md': $spacing-lg,
   'lg': $spacing-xl
 ) !default;
-
-// Z-Index
-$z-index-dropdown: 1000 !default;
-$z-index-sticky: 1020 !default;
-$z-index-fixed: 1030 !default;
-$z-index-modal-backdrop: 1040 !default;
-$z-index-modal: 1050 !default;
-$z-index-popover: 1060 !default;
-$z-index-tooltip: 1070 !default;
-$z-index-toast: 1080 !default;
 
 // =============================================================================
 // LAYOUT-MIXINS
@@ -127,28 +122,4 @@ $z-index-toast: 1080 !default;
     width: 100%;
     height: 100%;
   }
-}
-
-// =============================================================================
-// CSS CUSTOM PROPERTIES
-// =============================================================================
-
-:root {
-  // Container
-  --container-max-width: #{$container-max-width};
-  --container-padding: #{$container-padding};
-  
-  // Grid
-  --grid-columns: #{$grid-columns};
-  --grid-gap: #{$grid-gap};
-  
-  // Z-Index
-  --z-index-dropdown: #{$z-index-dropdown};
-  --z-index-sticky: #{$z-index-sticky};
-  --z-index-fixed: #{$z-index-fixed};
-  --z-index-modal-backdrop: #{$z-index-modal-backdrop};
-  --z-index-modal: #{$z-index-modal};
-  --z-index-popover: #{$z-index-popover};
-  --z-index-tooltip: #{$z-index-tooltip};
-  --z-index-toast: #{$z-index-toast};
 }
