@@ -1,0 +1,641 @@
+/* Import Inter Font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.card {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+  border: 1px solid;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: start;
+  min-height: 400px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: white;
+  }
+
+  .iconContainer {
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.2),
+      rgba(118, 75, 162, 0.15)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .title {
+    color: white;
+  }
+
+  .description {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .intro {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .developerCard {
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.15),
+      rgba(118, 75, 162, 0.1)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .developerName {
+    color: white;
+  }
+
+  .developerDescription {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .developerRole {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .websiteLink {
+    color: white;
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.3),
+      rgba(118, 75, 162, 0.2)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .websiteLink:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.4),
+      rgba(118, 75, 162, 0.3)
+    );
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .statusBadge {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .technologyChip {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .businessInfo {
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.1),
+      rgba(118, 75, 162, 0.05)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .businessInfoLabel {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .businessInfoValue {
+    color: white;
+  }
+}
+
+/* Light Mode Styles */
+@media (prefers-color-scheme: light) {
+  .card {
+    background: linear-gradient(135deg, #a8c0ff 0%, #c2e9fb 50%, #fbc2eb 100%);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #1a202c;
+  }
+
+  .iconContainer {
+    background: linear-gradient(
+      135deg,
+      rgba(168, 192, 255, 0.3),
+      rgba(194, 233, 251, 0.2)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .title {
+    color: #1a202c;
+  }
+
+  .description {
+    color: rgba(26, 32, 44, 0.9);
+  }
+
+  .intro {
+    color: rgba(26, 32, 44, 0.8);
+  }
+
+  .developerCard {
+    background: linear-gradient(
+      135deg,
+      rgba(168, 192, 255, 0.2),
+      rgba(194, 233, 251, 0.15)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .developerName {
+    color: #1a202c;
+  }
+
+  .developerDescription {
+    color: rgba(26, 32, 44, 0.9);
+  }
+
+  .developerRole {
+    color: rgba(26, 32, 44, 0.8);
+  }
+
+  .websiteLink {
+    color: #1a202c;
+    background: linear-gradient(
+      135deg,
+      rgba(168, 192, 255, 0.3),
+      rgba(194, 233, 251, 0.2)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .websiteLink:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(168, 192, 255, 0.4),
+      rgba(194, 233, 251, 0.3)
+    );
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .statusBadge {
+    background: rgba(26, 32, 44, 0.1);
+    color: #1a202c;
+    border: 1px solid rgba(26, 32, 44, 0.3);
+  }
+
+  .technologyChip {
+    background: rgba(26, 32, 44, 0.08);
+    color: rgba(26, 32, 44, 0.9);
+    border: 1px solid rgba(26, 32, 44, 0.2);
+  }
+
+  .businessInfo {
+    background: linear-gradient(
+      135deg,
+      rgba(168, 192, 255, 0.15),
+      rgba(194, 233, 251, 0.1)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .businessInfoLabel {
+    color: rgba(26, 32, 44, 0.8);
+  }
+
+  .businessInfoValue {
+    color: #1a202c;
+  }
+}
+
+/* Common Styles */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.iconContainer {
+  padding: 0;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  border: 3px solid;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.2rem;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.description {
+  line-height: 1.6;
+  font-weight: 400;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.1rem;
+  max-width: 90%;
+}
+
+.technologiesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.technologyChip {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+/* Right Column */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.intro {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.developerCard {
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  backdrop-filter: blur(10px);
+  flex-grow: 1;
+}
+
+.developerName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.developerDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+}
+
+.developerRole {
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Status Badge */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  width: fit-content;
+}
+
+/* Business Info */
+.businessInfo {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.businessInfoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid;
+}
+
+.businessInfoItem:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .businessInfoItem {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .businessInfoItem {
+    border-bottom-color: rgba(26, 32, 44, 0.1);
+  }
+}
+
+.businessInfoLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.businessInfoValue {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Website Link */
+.websiteLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  justify-content: center;
+  margin-top: auto;
+}
+
+/* Hover Effects */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 80px rgba(102, 126, 234, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .card {
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 1.25rem;
+  }
+
+  .header {
+    text-align: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .iconContainer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .technologiesContainer {
+    justify-content: center;
+  }
+
+  .developerCard {
+    text-align: center;
+  }
+
+  .businessInfoItem {
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+
+  .businessInfoValue {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    gap: 1.5rem;
+  }
+
+  .iconContainer {
+    width: 80px;
+    height: 80px;
+    border-radius: 1rem;
+  }
+
+  .title {
+    font-size: 1.375rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .developerCard {
+    padding: 1.25rem;
+  }
+
+  .businessInfo {
+    padding: 1.25rem;
+  }
+
+  .websiteLink {
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+/* Animation for card appearance */
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: cardAppear 0.6s ease-out;
+}
+
+/* Status Badge Colors */
+.statusBadgeActive {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.2),
+    rgba(22, 163, 74, 0.15)
+  ) !important;
+  color: #22c55e !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+}
+
+.statusBadgeMaintenance {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(37, 99, 235, 0.15)
+  ) !important;
+  color: #3b82f6 !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+}
+
+.statusBadgeDevelopment {
+  background: linear-gradient(
+    135deg,
+    rgba(234, 179, 8, 0.2),
+    rgba(202, 138, 4, 0.15)
+  ) !important;
+  color: #eab308 !important;
+  border: 1px solid rgba(234, 179, 8, 0.3) !important;
+}
+
+.statusBadgeForSale {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.15),
+    rgba(220, 38, 38, 0.1)
+  ) !important;
+  color: #dc2626 !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Dark Mode spezifische Status-Farben */
+@media (prefers-color-scheme: dark) {
+  .statusBadgeActive {
+    background: linear-gradient(
+      135deg,
+      rgba(34, 197, 94, 0.25),
+      rgba(22, 163, 74, 0.2)
+    ) !important;
+    color: #4ade80 !important;
+    border: 1px solid rgba(34, 197, 94, 0.4) !important;
+  }
+
+  .statusBadgeMaintenance {
+    background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.25),
+      rgba(37, 99, 235, 0.2)
+    ) !important;
+    color: #60a5fa !important;
+    border: 1px solid rgba(59, 130, 246, 0.4) !important;
+  }
+
+  .statusBadgeDevelopment {
+    background: linear-gradient(
+      135deg,
+      rgba(234, 179, 8, 0.25),
+      rgba(202, 138, 4, 0.2)
+    ) !important;
+    color: #facc15 !important;
+    border: 1px solid rgba(234, 179, 8, 0.4) !important;
+  }
+
+  .statusBadgeForSale {
+    background: linear-gradient(
+      135deg,
+      rgba(239, 68, 68, 0.25),
+      rgba(220, 38, 38, 0.2)
+    ) !important;
+    color: #f87171 !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
+  }
+}
+
+/* Light Mode spezifische Status-Farben */
+@media (prefers-color-scheme: light) {
+  .statusBadgeActive {
+    background: linear-gradient(
+      135deg,
+      rgba(34, 197, 94, 0.15),
+      rgba(22, 163, 74, 0.1)
+    ) !important;
+    color: #16a34a !important;
+    border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  }
+
+  .statusBadgeMaintenance {
+    background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.15),
+      rgba(37, 99, 235, 0.1)
+    ) !important;
+    color: #2563eb !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  }
+
+  .statusBadgeDevelopment {
+    background: linear-gradient(
+      135deg,
+      rgba(234, 179, 8, 0.15),
+      rgba(202, 138, 4, 0.1)
+    ) !important;
+    color: #ca8a04 !important;
+    border: 1px solid rgba(234, 179, 8, 0.3) !important;
+  }
+
+  .statusBadgeForSale {
+    background: linear-gradient(
+      135deg,
+      rgba(239, 68, 68, 0.15),
+      rgba(220, 38, 38, 0.1)
+    ) !important;
+    color: #dc2626 !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  }
+}
